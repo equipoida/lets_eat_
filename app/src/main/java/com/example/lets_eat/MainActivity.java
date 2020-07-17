@@ -2,6 +2,7 @@ package com.example.lets_eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,41 +15,28 @@ import com.example.lets_eat.databinding.ActivityMainBinding;
 import com.example.lets_eat.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding mBinding;
+    private ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding= ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(mBinding.getRoot());
-        final Button menuchoice = mBinding.button;
-        final Button review = mBinding.button2;
-        menuchoice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(getApplicationContext(),view);
-                MenuInflater inflater= getMenuInflater();
-                inflater.inflate(R.menu.popup,popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        menuchoice.setText(menuItem.getTitle());
-                        return false;
-                    }
-                });
-                popupMenu.show();
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        final Intent intent = new Intent(this, Rating.class);
+        final Intent intent2 = new Intent(this, Join.class);
+
+        binding.login.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //로그인 버튼을 누르면, 점수 매기는 액티비티 실행
+                //이곳에서 로그인 정보 확인하는 코드 필요
+                startActivity(intent);
             }
         });
-
+        binding.join.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                //회원가입 버튼 누르면, 회원가입 액티비티 실행
+                startActivity(intent2);
+            }
+        });
     }
-
-    public void mOnClick(View view) {
-        //Intent intent = new Intent (this,subActivity.class);
-        //intent.putExtra("menu", menuchoice.getText());
-        //intent.putExtra("review",edittext.getText());
-        //startActivityForResult(intent,0);
-        Toast.makeText(getApplication(),"리뷰가 저장됨",Toast.LENGTH_SHORT).show();
-        
-
-    }
-
 }

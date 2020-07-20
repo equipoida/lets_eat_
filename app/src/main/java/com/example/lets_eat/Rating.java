@@ -22,7 +22,7 @@ public class Rating extends AppCompatActivity {
         setContentView(mBinding.getRoot());
         final Button menuchoice = mBinding.button;
         final Button review = mBinding.button2;
-        final Intent intent = new Intent(this, MainActivity.class);
+        //final Intent intent = new Intent(this, MainActivity.class);
         menuchoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

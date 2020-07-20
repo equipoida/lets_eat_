@@ -26,6 +26,7 @@ public class SubActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        final Intent intent2 = new Intent(this, confusion.class);
         final Intent intent3 = new Intent(this, notification_list.class);
         final Intent intent4 = new Intent(this, Rating.class);
         switch (item.getItemId()) {
@@ -35,7 +36,7 @@ public class SubActivity extends AppCompatActivity {
                 return true;
             case R.id.item2:
                 Toast.makeText(this, "혼잡도", Toast.LENGTH_SHORT).show();
-
+                startActivity(intent2);
                 return true;
             case R.id.item3:
                 Toast.makeText(this, "알림", Toast.LENGTH_SHORT).show();

@@ -31,13 +31,14 @@ public class SubActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        final Intent intent6 = new Intent(this, Recommendation.class);
         final Intent intent5 = new Intent(this, confusion.class);
         final Intent intent3 = new Intent(this, notification_list.class);
         final Intent intent4 = new Intent(this, Rating.class);
         switch (item.getItemId()) {
             case R.id.item1:
                 Toast.makeText(this, "추천메뉴", Toast.LENGTH_SHORT).show();
-
+                startActivity(intent6);
                 return true;
             case R.id.item2:
                 Toast.makeText(this, "혼잡도", Toast.LENGTH_SHORT).show();

@@ -78,11 +78,12 @@ public class SubActivity extends AppCompatActivity {
 
 
             //테스트1
-            Elements titles= doc.select("td");
+            Elements titles= doc.select("td");//2: 월요일 3: 화요일
 
             for(Element e: titles){
                 System.out.println(e.text());
-                htmlContentInStringFormat += e.text().trim() + "\n";
+
+                htmlContentInStringFormat += e.text().trim() + "\n";//.trim 공백제거
 
                 String humi = e.text();
             }

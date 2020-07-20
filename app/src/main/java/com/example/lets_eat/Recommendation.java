@@ -16,7 +16,7 @@ public class Recommendation extends AppCompatActivity {
 
         //if(R.id.ratingBar)
 
-        final RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        final RatingBar ratingBar = (RatingBar) findViewById(R.id.RecommendratingBar);
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {

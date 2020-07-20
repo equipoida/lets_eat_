@@ -21,9 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         final Intent intent = new Intent(this, SubActivity.class);
-        final Intent intent2 = new Intent(this, Join.class);
+      final Intent intent2 = new Intent(this, Join.class);
 
         binding.login.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

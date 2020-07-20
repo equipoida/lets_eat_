@@ -9,12 +9,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class SubActivity extends AppCompatActivity {
+import com.example.lets_eat.databinding.ActivityMainBinding;
+import com.example.lets_eat.databinding.ActivitySubBinding;
 
+public class SubActivity extends AppCompatActivity {
+    private ActivitySubBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sub);
+        binding = ActivitySubBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
 
     }
 

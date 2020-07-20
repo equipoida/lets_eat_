@@ -2,6 +2,7 @@ package com.example.lets_eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +22,7 @@ public class Rating extends AppCompatActivity {
         setContentView(mBinding.getRoot());
         final Button menuchoice = mBinding.button;
         final Button review = mBinding.button2;
+        final Intent intent = new Intent(this, MainActivity.class);
         menuchoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,8 +47,9 @@ public class Rating extends AppCompatActivity {
         //intent.putExtra("menu", menuchoice.getText());
         //intent.putExtra("review",edittext.getText());
         //startActivityForResult(intent,0);
-        Toast.makeText(getApplication(),"리뷰가 저장됨",Toast.LENGTH_SHORT).show();
 
+        Toast.makeText(getApplication(),"리뷰가 저장됨",Toast.LENGTH_SHORT).show();
+        finish();
 
     }
 }

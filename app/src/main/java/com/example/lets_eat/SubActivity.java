@@ -3,14 +3,22 @@ package com.example.lets_eat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.lets_eat.databinding.ActivityMainBinding;
 import com.example.lets_eat.databinding.ActivitySubBinding;
+
+import java.io.BufferedInputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class SubActivity extends AppCompatActivity {
     private ActivitySubBinding binding;
@@ -19,6 +27,9 @@ public class SubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySubBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        ImageView imgView = binding.imageView;
+        String imageUrl = "https://www.hansung.ac.kr/portlet-repositories/fckeditor/images/7qHyuRAiKcc=/1595204995118.png";
+        Glide.with(this).load(imageUrl).into(imgView);
 
 
     }

@@ -36,6 +36,7 @@ public class SubActivity extends AppCompatActivity {
         Glide.with(this).load(imageUrl).into(imgView);
 
 
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

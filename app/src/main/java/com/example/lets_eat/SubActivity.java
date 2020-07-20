@@ -20,6 +20,8 @@ import java.io.BufferedInputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 public class SubActivity extends AppCompatActivity {
     private ActivitySubBinding binding;
     @Override
@@ -28,6 +30,8 @@ public class SubActivity extends AppCompatActivity {
         binding = ActivitySubBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         ImageView imgView = binding.imageView;
+        PhotoViewAttacher photoView = new PhotoViewAttacher(imgView);
+        photoView.update();
         String imageUrl = "https://www.hansung.ac.kr/portlet-repositories/fckeditor/images/7qHyuRAiKcc=/1595204995118.png";
         Glide.with(this).load(imageUrl).into(imgView);
 

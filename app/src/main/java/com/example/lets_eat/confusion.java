@@ -14,9 +14,10 @@ public class confusion extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding= ActivityConfusionBinding.inflate(getLayoutInflater());
+        setContentView(mBinding.getRoot());
         ProgressBar bar1 = mBinding.progressBar1;
         ProgressBar bar2 = mBinding.progressBar2;
-        setContentView(mBinding.getRoot());
+
         bar1.setProgress(50);
         bar2.setProgress(50);
 

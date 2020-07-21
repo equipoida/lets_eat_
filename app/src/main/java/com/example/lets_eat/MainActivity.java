@@ -10,9 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+import com.example.lets_eat.databinding.ActivityMainBinding;
 
-import com.example.lets_eat.databinding.ActivityMainBinding;
-import com.example.lets_eat.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;

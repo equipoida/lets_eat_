@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.lets_eat">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -10,7 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Recommendation"></activity>
+        <activity android:name=".Recommendation">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="google.com" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Join" />
         <activity android:name=".Rating" />
         <activity android:name=".MainActivity">
@@ -22,7 +34,7 @@
         </activity>
         <activity android:name=".SubActivity" />
         <activity android:name=".notification_list" />
-        <activity android:name=".confusion"/>
+        <activity android:name=".confusion" />
 
     </application>
 

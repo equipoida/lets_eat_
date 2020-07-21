@@ -78,7 +78,7 @@ public class SubActivity extends AppCompatActivity {
 
 
             //테스트1
-            Elements titles= doc.select("td");//2: 월요일 3: 화요일
+            Elements titles= doc.select("td"); //2: 월요일 3: 화요일
 
             for(Element e: titles){
                 System.out.println(e.text());

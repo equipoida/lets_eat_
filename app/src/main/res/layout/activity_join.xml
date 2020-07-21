@@ -13,9 +13,8 @@
         android:layout_marginBottom="184dp"
         android:text="@string/join_btn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/phoneText"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="@+id/phoneText" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/idText"
@@ -25,8 +24,9 @@
         android:hint="@string/login_hint"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/passwordText"
-        app:layout_constraintStart_toStartOf="@+id/nameText"
-        app:layout_constraintTop_toBottomOf="@+id/nameText" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUp" />
 
     <EditText
         android:id="@+id/passwordText"
@@ -35,37 +35,11 @@
         android:ems="10"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/phoneText"
+        app:layout_constraintBottom_toTopOf="@+id/joinBtn"
         app:layout_constraintEnd_toEndOf="@+id/idText"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/idText"
         app:layout_constraintTop_toBottomOf="@+id/idText" />
-
-    <EditText
-        android:id="@+id/nameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/name_hint"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/idText"
-        app:layout_constraintEnd_toEndOf="@+id/signUp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/signUp"
-        app:layout_constraintTop_toBottomOf="@+id/signUp" />
-
-    <EditText
-        android:id="@+id/phoneText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/phoneNumber_hint"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/joinBtn"
-        app:layout_constraintEnd_toEndOf="@+id/passwordText"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/passwordText"
-        app:layout_constraintTop_toBottomOf="@+id/passwordText" />
 
     <TextView
         android:id="@+id/signUp"

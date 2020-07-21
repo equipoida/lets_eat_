@@ -74,7 +74,7 @@ public class Join extends AppCompatActivity {
         String email = ((EditText) findViewById(R.id.idText)).getText().toString();
         String password = ((EditText) findViewById(R.id.passwordText)).getText().toString();
 
-        mAuth.signInAnonymously()
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

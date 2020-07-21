@@ -56,7 +56,7 @@ public class Join extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        //pdateUI(currentUser);
+        //updateUI(currentUser);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -74,7 +74,7 @@ public class Join extends AppCompatActivity {
         String email = ((EditText) findViewById(R.id.idText)).getText().toString();
         String password = ((EditText) findViewById(R.id.passwordText)).getText().toString();
 
-        mAuth.createUserWithEmailAndPassword(email, password)
+        mAuth.signInAnonymously()
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

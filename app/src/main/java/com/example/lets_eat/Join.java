@@ -71,8 +71,8 @@ public class Join extends AppCompatActivity {
     };
 
     private void signUp() {
-        String email = ((EditText) findViewById(R.id.idText)).getText().toString();
-        String password = ((EditText) findViewById(R.id.passwordText)).getText().toString();
+        String email = binding.idText.getText().toString();
+        String password = binding.passwordText.getText().toString();
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

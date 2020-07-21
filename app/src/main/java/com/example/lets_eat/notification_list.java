@@ -79,7 +79,7 @@ public class notification_list extends AppCompatActivity {
 
 
         /*
-        // 어댑터뷰 강의에서 가져온 코
+        // 어댑터뷰 강의에서 가져온 코드
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

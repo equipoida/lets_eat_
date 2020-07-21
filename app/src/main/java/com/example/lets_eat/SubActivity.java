@@ -52,14 +52,14 @@ public class SubActivity extends AppCompatActivity {
 
         binding.facultiesMenu.setMovementMethod(new ScrollingMovementMethod()); //스
 
-                JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
-                jsoupAsyncTask.execute();
+        JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
+        jsoupAsyncTask.execute();
 
     }
 
     private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
         private String htmlPageUrl = "https://www.hansung.ac.kr/web/www/life_03_01_t2"; //파싱할 홈페이지의 URL주소
-        private String htmlContentInStringFormat="";
+        private String htmlContentInStringFormat = "";
 
         @Override
         protected void onPreExecute() {
@@ -78,9 +78,9 @@ public class SubActivity extends AppCompatActivity {
 
 
             //테스트1
-            Elements titles= doc.select("td"); //2: 월요일 3: 화요일
+            Elements titles = doc.select("td"); //2: 월요일 3: 화요일
 
-            for(Element e: titles){
+            for (Element e : titles) {
                 System.out.println(e.text());
 
                 htmlContentInStringFormat += e.text().trim() + "\n";//.trim 공백제거
@@ -96,7 +96,6 @@ public class SubActivity extends AppCompatActivity {
             binding.facultiesMenu.setText(htmlContentInStringFormat);
         }
     }
-
 
 
     public boolean onCreateOptionsMenu(Menu menu) {

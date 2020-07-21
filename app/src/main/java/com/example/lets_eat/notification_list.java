@@ -31,6 +31,7 @@ class Notification_list {
 
 class ViewHolder extends RecyclerView.ViewHolder {
     ItemBinding mBinding;
+
     ViewHolder(ItemBinding binding) {
         super(binding.getRoot());
         mBinding = binding;
@@ -49,7 +50,7 @@ class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        ItemBinding binding = ItemBinding.inflate(inflater,parent,false);
+        ItemBinding binding = ItemBinding.inflate(inflater, parent, false);
         return new ViewHolder(binding);
     }
 

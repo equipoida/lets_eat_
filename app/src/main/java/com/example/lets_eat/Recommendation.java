@@ -20,13 +20,12 @@ public class Recommendation extends AppCompatActivity {
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                if(ratingBar.getRating()>=4) { //별점이 4개 이상일 때
+                if (ratingBar.getRating() >= 4) { //별점이 4개 이상일 때
 
                 }
             }
         });
     }
-
 
 
     public void mOnClick(View view) {

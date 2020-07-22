@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //로그인 버튼을 누르면, 학식메뉴 나오게하기
                 //이곳에서 로그인 정보 확인하는 코드 필요
-                String email=email_login.getText().toString().trim();
+                /*String email=email_login.getText().toString().trim();
                 String pwd=pwd_login.getText().toString().trim();
                 firebaseAuth.signInWithEmailAndPassword(email,pwd)
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.makeText(MainActivity.this,"로그인 오류",Toast.LENGTH_SHORT).show();
                                 }
                             }
-                        });
-
+                        });*/
+                startActivity(intent);
             }
         });
         binding.join.setOnClickListener(new View.OnClickListener() {

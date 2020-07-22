@@ -51,6 +51,7 @@ public class Join extends AppCompatActivity {
                 finish();
             }
         });
+
          */
 
     }

@@ -50,7 +50,7 @@ public class SubActivity extends AppCompatActivity {
         String imageUrl = "https://www.hansung.ac.kr/portlet-repositories/fckeditor/images/7qHyuRAiKcc=/1595204995118.png";
         Glide.with(this).load(imageUrl).into(imgView);
 
-        binding.facultiesMenu.setMovementMethod(new ScrollingMovementMethod()); //스
+        binding.facultiesMenu.setMovementMethod(new ScrollingMovementMethod()); //스크롤
 
         JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();
@@ -110,22 +110,28 @@ public class SubActivity extends AppCompatActivity {
         final Intent intent5 = new Intent(this, confusion.class);
         final Intent intent3 = new Intent(this, notification_list.class);
         final Intent intent4 = new Intent(this, Rating.class);
+        final Intent intent2 = new Intent(this, Person.class);
+
         switch (item.getItemId()) {
             case R.id.item1:
                 Toast.makeText(this, "추천메뉴", Toast.LENGTH_SHORT).show();
-                startActivity(intent6);
+                startActivity(intent6); //추천메뉴 창으로 가기
                 return true;
             case R.id.item2:
                 Toast.makeText(this, "혼잡도", Toast.LENGTH_SHORT).show();
-                startActivity(intent5);
+                startActivity(intent5); //혼잡도 창으로 가기
                 return true;
             case R.id.item3:
                 Toast.makeText(this, "알림", Toast.LENGTH_SHORT).show();
-                startActivity(intent3);
+                startActivity(intent3); //알림 창으로 가기
                 return true;
             case R.id.item4:
                 Toast.makeText(this, "리뷰", Toast.LENGTH_SHORT).show();
-                startActivity(intent4);
+                startActivity(intent4); //리뷰 창으로 가기
+                return true;
+            case R.id.item5:
+                Toast.makeText(this, "계정 정보", Toast.LENGTH_SHORT).show();
+                startActivity(intent2); //계정 정보 창으로 가기
                 return true;
 
         }

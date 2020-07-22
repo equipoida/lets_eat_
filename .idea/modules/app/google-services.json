@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1020146341684:android:9eb6c4510cc35c0723f761",
+        "mobilesdk_app_id": "1:1020146341684:android:18f2a1d1c37ea68923f761",
         "android_client_info": {
           "package_name": "com.example.lets_eat"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "1020146341684-avlchgg6ef307arf2thhfko0vpc8dges.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.lets_eat",
-            "certificate_hash": "7a77e8e63f39ee16ddb7205bb3354a6a8489c562"
-          }
-        },
         {
           "client_id": "1020146341684-b7posu9dp4ogfd4rvucue4af72br84ki.apps.googleusercontent.com",
           "client_type": 1,

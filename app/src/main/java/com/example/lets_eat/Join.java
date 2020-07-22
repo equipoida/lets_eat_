@@ -41,18 +41,6 @@ public class Join extends AppCompatActivity {
 
 
         findViewById(R.id.joinBtn).setOnClickListener(onClickListener);
-        /*
-        binding.joinBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //회원 정보 입력하고, 회원가입 버튼을 누르면
-                //초기 화면(로그인 화면)으로 돌아감.
-                //입력된 데이터들을 DB에 저장 필요
-                finish();
-            }
-        });
-
-         */
 
     }
 
@@ -68,6 +56,9 @@ public class Join extends AppCompatActivity {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            //회원 정보 입력하고, 회원가입 버튼을 누르면
+            //초기 화면(로그인 화면)으로 돌아감.
+            //입력된 데이터들을 DB에 저장 필요
             switch (v.getId()) {
                 case R.id.joinBtn:
                     signUp();

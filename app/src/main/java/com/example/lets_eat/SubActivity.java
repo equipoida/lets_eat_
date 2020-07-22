@@ -50,7 +50,7 @@ public class SubActivity extends AppCompatActivity {
         String imageUrl = "https://www.hansung.ac.kr/portlet-repositories/fckeditor/images/7qHyuRAiKcc=/1595204995118.png";
         Glide.with(this).load(imageUrl).into(imgView);
 
-        binding.facultiesMenu.setMovementMethod(new ScrollingMovementMethod()); //스
+        binding.facultiesMenu.setMovementMethod(new ScrollingMovementMethod()); //스크롤
 
         JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();

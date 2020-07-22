@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "650710667503",
-    "firebase_url": "https://lets-eat-df397.firebaseio.com",
-    "project_id": "lets-eat-df397",
-    "storage_bucket": "lets-eat-df397.appspot.com"
+    "project_number": "1020146341684",
+    "firebase_url": "https://letseat-5cd57.firebaseio.com",
+    "project_id": "letseat-5cd57",
+    "storage_bucket": "letseat-5cd57.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:650710667503:android:60ceb59386a1824e094b1a",
+        "mobilesdk_app_id": "1:1020146341684:android:9eb6c4510cc35c0723f761",
         "android_client_info": {
           "package_name": "com.example.lets_eat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "650710667503-l9ejie2d0ks3j6h5amgbrv14adqncg9d.apps.googleusercontent.com",
+          "client_id": "1020146341684-q1dvki4clnjq72ihmj06noeaducl2mo0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB_NuDlQgTLQ3_UNmJ5teWZltqrby1K8fo"
+          "current_key": "AIzaSyAW9INsKLxHaXPMAyn8jeNDk4fE9aVVu0U"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "650710667503-l9ejie2d0ks3j6h5amgbrv14adqncg9d.apps.googleusercontent.com",
+              "client_id": "1020146341684-q1dvki4clnjq72ihmj06noeaducl2mo0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "899655381661",
+    "firebase_url": "https://letseat-3850a.firebaseio.com",
+    "project_id": "letseat-3850a",
+    "storage_bucket": "letseat-3850a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899655381661:android:a62666f1e180e94e579a74",
+        "android_client_info": {
+          "package_name": "com.example.lets_eat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899655381661-23vpcha3k1jd7bq99ljsib2kop68ddm3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lets_eat",
+            "certificate_hash": "b7e6f86f86b9ab1f83a92c156d612ef53c587803"
+          }
+        },
+        {
+          "client_id": "899655381661-drdliibgvlgshm0eg0lolaihakqhfhp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBGFUzepc7At3Rw6hIksuPv_-FRsK-IZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899655381661-drdliibgvlgshm0eg0lolaihakqhfhp6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

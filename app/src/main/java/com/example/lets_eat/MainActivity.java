@@ -1,5 +1,6 @@
 package com.example.lets_eat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,13 +9,21 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 import com.example.lets_eat.databinding.ActivityMainBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+    private EditText email_login;
+    private EditText pwd_login;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +32,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         final Intent intent = new Intent(this, SubActivity.class);
         final Intent intent2 = new Intent(this, Join.class);
-
+        firebaseAuth=firebaseAuth.getInstance();
+        email_login=binding.textId;
+        pwd_login=binding.textPassword;
         binding.login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //로그인 버튼을 누르면, 학식메뉴 나오게하기
                 //이곳에서 로그인 정보 확인하는 코드 필요
-                startActivity(intent);
+                String email=email_login.getText().toString().trim();
+                String pwd=pwd_login.getText().toString().trim();
+                firebaseAuth.signInWithEmailAndPassword(email,pwd)
+                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    startActivity(intent);
+                                }else{
+                                    Toast.makeText(MainActivity.this,"로그인 오류",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
             }
         });
         binding.join.setOnClickListener(new View.OnClickListener() {

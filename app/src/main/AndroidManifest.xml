@@ -4,6 +4,7 @@
     package="com.example.lets_eat">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Person"></activity>
         <activity android:name=".Recommendation">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -19,8 +21,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="http"
-                    android:host="google.com" />
+                    android:host="google.com"
+                    android:scheme="http" />
             </intent-filter>
         </activity>
         <activity android:name=".Join" />
@@ -35,7 +37,6 @@
         <activity android:name=".SubActivity" />
         <activity android:name=".notification_list" />
         <activity android:name=".confusion" />
-
     </application>
 
 </manifest>

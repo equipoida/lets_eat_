@@ -2,6 +2,7 @@ package com.example.lets_eat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,7 +35,15 @@ public class MainActivity extends AppCompatActivity {
         final Intent intent = new Intent(this, SubActivity.class);
         final Intent intent2 = new Intent(this, Join.class);
         firebaseAuth=FirebaseAuth.getInstance();
-        email_login=binding.textId;
+        if(firebaseAuth.getCurrentUser() != null){
+            //이미 로그인 되었다면 이 액티비티를 종료함
+            finish();
+            //그리고 profile 액티비티를 연다.
+            startActivity(new Intent(getApplicationContext(),SubActivity.class)); //추가해 줄 ProfileActivity
+        }
+
+
+                email_login=binding.textId;
         pwd_login=binding.textPassword;
         binding.login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

@@ -110,7 +110,7 @@ public class SubActivity extends AppCompatActivity {
         final Intent intent5 = new Intent(this, confusion.class);
         final Intent intent3 = new Intent(this, notification_list.class);
         final Intent intent4 = new Intent(this, Rating.class);
-        final Intent intent2 = new Intent(this, Person.class);
+        final Intent intent8 = new Intent(this, Person.class);
 
         switch (item.getItemId()) {
             case R.id.item1:
@@ -131,7 +131,7 @@ public class SubActivity extends AppCompatActivity {
                 return true;
             case R.id.item5:
                 Toast.makeText(this, "계정 정보", Toast.LENGTH_SHORT).show();
-                startActivity(intent2); //계정 정보 창으로 가기
+                startActivity(intent8); //계정 정보 창으로 가기
                 return true;
 
         }

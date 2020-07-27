@@ -19,6 +19,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(String token) {
         Log.d("FCM Log", "Refreshed token: " + token);
+        //sendRegistrationToServer(token);
     }
 
     @Override
@@ -36,7 +37,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
                     new NotificationCompat.Builder(this, channelId)
                             .setSmallIcon(R.mipmap.ic_launcher)
                             .setContentTitle(messageTitle)
-                            .setContentText(messageTitle)
+                            .setContentText(messageBody)
                             .setAutoCancel(true)
                             .setSound(defaultSoundUri)
                             .setContentIntent(pendingIntent);

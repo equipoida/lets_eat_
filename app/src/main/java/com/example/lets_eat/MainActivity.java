@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.w("FCM Log", "getInstanceId failed", task.getException());
                             return;
                         }
+                        // 새로운 InstanceID token 가져오기
                         String token = task.getResult().getToken();
                         Log.d("FCM Log", "FCM 토큰: " + token);
                         Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();

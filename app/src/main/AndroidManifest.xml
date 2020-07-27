@@ -37,6 +37,8 @@
         <activity android:name=".SubActivity" />
         <activity android:name=".notification_list" />
         <activity android:name=".confusion" />
+        <activity android:name=".NotifyMain"
+            android:parentActivityName=".notification_list"></activity>
         <service
             android:name=".MyFireBaseMessagingService"
             android:exported="false">

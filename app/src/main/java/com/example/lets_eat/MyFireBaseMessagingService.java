@@ -1,4 +1,4 @@
-package com.example.lets_eat;
+/*package com.example.lets_eat;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -46,4 +46,4 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
             notificationManager.notify(0, notificationBuilder.build());
         }
     }
-}
+}*/

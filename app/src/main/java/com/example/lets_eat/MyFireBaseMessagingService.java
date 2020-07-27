@@ -1,4 +1,4 @@
-package com.example.lets_eat;
+/*package com.example.lets_eat;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -9,20 +9,15 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
-
 import androidx.core.app.NotificationCompat;
-
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-/*
 public class MyFireBaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(String token) {
         Log.d("FCM Log", "Refreshed token: " + token);
-        //sendRegistrationToServer(token);
     }
-
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         if(remoteMessage.getNotification() != null) {
@@ -38,7 +33,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
                     new NotificationCompat.Builder(this, channelId)
                             .setSmallIcon(R.mipmap.ic_launcher)
                             .setContentTitle(messageTitle)
-                            .setContentText(messageBody)
+                            .setContentText(messageTitle)
                             .setAutoCancel(true)
                             .setSound(defaultSoundUri)
                             .setContentIntent(pendingIntent);
@@ -51,7 +46,4 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
             notificationManager.notify(0, notificationBuilder.build());
         }
     }
-}
-
-
- */
+}*/

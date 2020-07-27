@@ -36,7 +36,7 @@ import java.net.URLConnection;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class SubActivity extends AppCompatActivity {
-    private ActivitySubBinding binding;
+    private static ActivitySubBinding binding;
 
 
     @Override
@@ -57,7 +57,7 @@ public class SubActivity extends AppCompatActivity {
 
     }
 
-    private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
+    static class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
         private String htmlPageUrl = "https://www.hansung.ac.kr/web/www/life_03_01_t2"; //파싱할 홈페이지의 URL주소
         private String htmlContentInStringFormat = "";
 

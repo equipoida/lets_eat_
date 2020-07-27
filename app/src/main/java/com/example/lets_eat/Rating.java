@@ -8,21 +8,34 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupMenu;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.lets_eat.databinding.ActivityRatingBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Rating extends AppCompatActivity {
     private ActivityRatingBinding mBinding;
+    RatingBar ratingBar;
+    EditText editText;
+
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = ActivityRatingBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
+
+        ratingBar = mBinding.ratingBar;
+        editText = mBinding.editText;
         final Button menuchoice = mBinding.button;
         final Button review = mBinding.button2;
+
         //final Intent intent = new Intent(this, MainActivity.class);
         menuchoice.setOnClickListener(new View.OnClickListener() {
             @Override

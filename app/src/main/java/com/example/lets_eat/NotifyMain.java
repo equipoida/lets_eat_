@@ -62,7 +62,7 @@ public class NotifyMain extends AppCompatActivity {
 
 
 
-        mNotificationManagerCompat.notify(MY_NOTIFICATION_ID, mBuilder.build());
+        //mNotificationManagerCompat.notify(MY_NOTIFICATION_ID, mBuilder.build());
     }
 
 

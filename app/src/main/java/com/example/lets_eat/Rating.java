@@ -33,8 +33,8 @@ public class Rating extends AppCompatActivity {
 
         ratingBar = mBinding.ratingBar;
         editText = mBinding.editText;
-        final Button menuchoice = mBinding.button;
-        final Button review = mBinding.button2;
+        final Button menuchoice = mBinding.menuchoice;
+        final Button submit = mBinding.submit;
 
         //final Intent intent = new Intent(this, MainActivity.class);
         menuchoice.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +54,15 @@ public class Rating extends AppCompatActivity {
             }
         });
 
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rootNode = FirebaseDatabase.getInstance();
+                reference = rootNode.getReference("review");
+
+                reference.setValue("First data storage");
+            }
+        });
     }
 
     public void mOnClick(View view) {

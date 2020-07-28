@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,32 +15,52 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.lets_eat.databinding.ActivityRatingBinding;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.IgnoreExtraProperties;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Rating extends AppCompatActivity {
     private ActivityRatingBinding mBinding;
-    RatingBar ratingBar;
-    EditText editText;
+    RatingBar mstar;
+    EditText mreview;
+    Button mmenuname;
 
+    FirebaseDatabase rootNode;
     DatabaseReference mDatabase;
-    mDatabase = FirebaseDatabase.getInstance().getReference();NewPostActivity.java
-    private void writeNewUser(String menuname,String review,double star) {
+    //mDatabase = rootNode.getInstance().getReference();
+    //NewPostActivity.java
+    /*
+    private void writeNewUser(String menuname,String review, float star) {
         User user = new User();
 
-        mDatabase.child("users").child(userId).setValue(user);
+        mDatabase.child("users").child(menuname).setValue(user);
+        mDatabase.child("users").child(review).setValue(user);
+        mDatabase.child("users").child(String.valueOf(star)).setValue(user);
+
     }
+
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = ActivityRatingBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
-        mDatabase.child("users").child(userId).child("username").setValue(name);
+        ///mDatabase.child("users").child(menuchoice).child("username").setValue(users);
 
 
-        ratingBar = mBinding.ratingBar;
-        editText = mBinding.editText;
+        mstar = mBinding.ratingBar;
+        mreview = mBinding.editText;
+        mmenuname = mBinding.menuchoice;
+
         final Button menuchoice = mBinding.menuchoice;
         final Button submit = mBinding.submit;
 
@@ -65,12 +86,22 @@ public class Rating extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("review");
+                mDatabase = rootNode.getReference("review");
 
-                reference.setValue("First data storage");
+                //모든 값 가져오기
+                String menuname = mmenuname.getText().toString();
+                String review = mreview.getText().toString();
+                //String star = mstar.getText().toString();
+
+                Userhelper helperclass = new Userhelper(menuname, review);
+
+
+                mDatabase.setValue("First data storage");
             }
         });
     }
+
+    /*
     @IgnoreExtraProperties
     public class Post {
 
@@ -106,6 +137,8 @@ public class Rating extends AppCompatActivity {
         }
 
     }
+
+     */
     public void mOnClick(View view) {
         //Intent intent = new Intent (this,subActivity.class);
         //intent.putExtra("menu", menuchoice.getText());
@@ -116,6 +149,7 @@ public class Rating extends AppCompatActivity {
         finish();
 
     }
+    /*
     private void writeNewPost(String userId, String username, String title, String body) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
@@ -179,4 +213,6 @@ public String review;
         }
 
     }
+
+     */
 }

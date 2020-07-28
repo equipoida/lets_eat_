@@ -118,7 +118,7 @@ public class SubActivity extends AppCompatActivity {
                 startActivity(intent6); //추천메뉴 창으로 가기
                 return true;
             case R.id.item2:
-                Toast.makeText(this, "혼잡도", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "한줄 건의함", Toast.LENGTH_SHORT).show();
                 startActivity(intent5); //혼잡도 창으로 가기
                 return true;
             case R.id.item3:

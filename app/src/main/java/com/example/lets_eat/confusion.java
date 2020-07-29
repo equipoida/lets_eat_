@@ -95,6 +95,7 @@ public class confusion extends AppCompatActivity {
                 items.add(mBinding.editTextTextPersonName.getText().toString());
                 // listview 갱신
                 adapter.notifyDataSetChanged();
+                mBinding.editTextTextPersonName.getText().clear();
             }
         }) ;
     }

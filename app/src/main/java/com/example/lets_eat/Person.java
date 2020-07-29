@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lets_eat.databinding.ActivityPersonBinding;
@@ -17,14 +18,19 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Person extends AppCompatActivity {
     private ActivityPersonBinding binding;
-    FirebaseAuth firebaseAuth;
     private static final String TAG = "revokeActivity";
+    static private TextView information;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityPersonBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //로그인 되어있는 email 정보 보여주기
+        information = binding.emailInformation;
+        information.setText(MainActivity.email);
+
         final Intent intent9 = new Intent(this, MainActivity.class);
         binding.btnLogout.setOnClickListener(
                 new View.OnClickListener() {

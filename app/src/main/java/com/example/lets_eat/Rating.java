@@ -86,7 +86,7 @@ public class Rating extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 rootNode = FirebaseDatabase.getInstance();
-                mDatabase = rootNode.getReference("review");
+                mDatabase = rootNode.getReference("users");
 
                 //모든 값 가져오기
                 String menuname = mmenuname.getText().toString();
@@ -95,8 +95,8 @@ public class Rating extends AppCompatActivity {
 
                 Userhelper helperclass = new Userhelper(menuname, review);
 
-
-                mDatabase.setValue("First data storage");
+                mDatabase.child(menuname).setValue(helperclass);
+                //mDatabase.setValue("First data storage");
             }
         });
     }

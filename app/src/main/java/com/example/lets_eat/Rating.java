@@ -81,7 +81,7 @@ public class Rating extends AppCompatActivity {
                 mDatabase = rootNode.getReference("review");
 
 
-                //모든 값 가져오기
+                //값을 데이터베이스에 보내기
                 String menuname = mmenuname.getText().toString();
                 String review = mreview.getText().toString();
                 String star = String.valueOf(mstar.getRating());

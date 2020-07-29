@@ -36,7 +36,7 @@ public class Recommendation extends AppCompatActivity {
 
         //if(R.id.ratingBar)
 
-        /*
+
         // 빈 데이터 리스트 생성.
         final ArrayList<String> items = new ArrayList<String>() ;
 
@@ -49,6 +49,7 @@ public class Recommendation extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseRef = database.getReference("review");
 
+
         // Read from the database
         databaseRef.child("user").addValueEventListener(new ValueEventListener() {
             @Override
@@ -57,8 +58,8 @@ public class Recommendation extends AppCompatActivity {
                 // 클래스 모델이 필요?
                 for (DataSnapshot user : dataSnapshot.getChildren()) {
                     //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
-                    //하위키들의 value를 어떻게 가져오느냐???
-                    String str = user.child("user").getValue(String.class);
+                    // review 안에 있는 user 안의 review를 listview에 넣기
+                    String str = user.child("review").getValue(String.class);
                     Log.i("TAG: value is ", str);
                     items.add(str);
                 }
@@ -71,7 +72,7 @@ public class Recommendation extends AppCompatActivity {
             }
         });
 
-         */
+
     }
 
 

@@ -13,11 +13,13 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.lets_eat.databinding.ActivityRatingBinding;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Rating extends AppCompatActivity {
     private ActivityRatingBinding mBinding;
+    private FirebaseAuth mAuth;
     RatingBar mstar;
     EditText mreview;
     Button mmenuname;
@@ -30,6 +32,7 @@ public class Rating extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = ActivityRatingBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
+
 
         mstar = mBinding.ratingBar;
         mreview = mBinding.editText;
@@ -60,6 +63,7 @@ public class Rating extends AppCompatActivity {
             public void onClick(View view) {
                 rootNode = FirebaseDatabase.getInstance();
                 mDatabase = rootNode.getReference("review");
+
 
                 //모든 값 가져오기
                 String menuname = mmenuname.getText().toString();

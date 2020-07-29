@@ -17,6 +17,9 @@ public class Userhelper {
         this.star = star;
     }
 
+    public Userhelper(String suggestion) {
+    }
+
     public String getMenuname() {
         return menuname;
     }

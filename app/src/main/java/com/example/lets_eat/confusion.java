@@ -2,6 +2,7 @@
 package com.example.lets_eat;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,14 +16,18 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lets_eat.databinding.ActivityConfusionBinding;
 import com.example.lets_eat.databinding.ActivityRatingBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -41,11 +46,38 @@ public class confusion extends AppCompatActivity {
         final ArrayList<String> items = new ArrayList<String>() ;
         // ArrayAdapter 생성. 아이템 View를 선택(single choice)가능하도록 만듦.
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, items) ;
-
-        // listview 생성 및 adapter 지정.
         final ListView listview = (ListView) findViewById(R.id.listview) ;
         listview.setAdapter(adapter) ;
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseRef = database.getReference("suggestion");
+
+        // Read from the database
+        databaseRef.child("suggestion").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                // 클래스 모델이 필요?
+                for (DataSnapshot suggest : dataSnapshot.getChildren()) {
+                    //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
+                    //하위키들의 value를 어떻게 가져오느냐???
+                    String str = suggest.child("suggestion").getValue(String.class);
+                    Log.i("TAG: value is ", str);
+                    items.add(str);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+      //
+            }
+        });
+        // listview 생성 및 adapter 지정.
+
 
         mBinding.button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {

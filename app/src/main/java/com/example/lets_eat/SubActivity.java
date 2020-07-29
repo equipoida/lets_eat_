@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,6 +33,11 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Locale;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -60,6 +66,8 @@ public class SubActivity extends AppCompatActivity {
     static class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
         private String htmlPageUrl = "https://www.hansung.ac.kr/web/www/life_03_01_t2"; //파싱할 홈페이지의 URL주소
         private String htmlContentInStringFormat = "";
+        Date currentTime = Calendar.getInstance().getTime();
+        SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE", Locale.getDefault());
 
         @Override
         protected void onPreExecute() {
@@ -78,21 +86,44 @@ public class SubActivity extends AppCompatActivity {
 
 
             //테스트1
-            Elements titles = doc.select("td"); //2: 월요일 3: 화요일
+           // Elements titles = doc.select("td"); //2: 월요일 3: 화요일
 
-            for (Element e : titles) {
-                System.out.println(e.text());
+           // for (Element e : titles) {
+                String weekday = weekdayFormat.format(currentTime);
 
-                htmlContentInStringFormat += e.text().trim() + "\n";//.trim 공백제거
 
-                String humi = e.text();
-            }
+                if (weekday.equals("Mon")) {
+                    htmlContentInStringFormat =doc.select("td").get(0).text();
+                    System.out.println(htmlContentInStringFormat);
+                } else if (weekday.equals("Tue")) {
+                    htmlContentInStringFormat = doc.select("td").get(1).text();
+                    System.out.println(htmlContentInStringFormat);
+                } else if (weekday.equals("Wed")) {
+                    htmlContentInStringFormat = doc.select("td").get(2).text();
+                    System.out.println(htmlContentInStringFormat);
+                } else if (weekday.equals("Thu")) {
+                    htmlContentInStringFormat = doc.select("td").get(3).text();
+                    System.out.println(htmlContentInStringFormat);
+                } else if (weekday.equals("Fri")) {
+                    htmlContentInStringFormat = doc.select("td").get(4).text();
+                    System.out.println(htmlContentInStringFormat);
+                } else if (weekday.equals("Sat")) {
+                    htmlContentInStringFormat = "운영하지 않습니다.";
+                    System.out.println("운영하지 않습니다.");
+                } else if (weekday.equals("Sun")) {
+                    htmlContentInStringFormat = "운영하지 않습니다.";
+                    System.out.println("운영하지 않습니다.");
+                }
+
+
 
             return null;
-        }
 
+
+    }
         @Override
         protected void onPostExecute(Void result) {
+
             binding.facultiesMenu.setText(htmlContentInStringFormat);
         }
     }

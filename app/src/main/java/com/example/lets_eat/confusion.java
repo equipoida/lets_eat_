@@ -48,6 +48,7 @@ public class confusion extends AppCompatActivity {
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, items) ;
         final ListView listview = (ListView) findViewById(R.id.listview) ;
         listview.setAdapter(adapter) ;
+        // 선택된 곳에 따른 화면이동
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
 
@@ -73,7 +74,6 @@ public class confusion extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-      //
             }
         });
         // listview 생성 및 adapter 지정.

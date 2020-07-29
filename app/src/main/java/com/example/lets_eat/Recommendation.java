@@ -43,8 +43,8 @@ public class Recommendation extends AppCompatActivity {
 
         // ArrayAdapter 생성. 아이템 View를 선택(single choice)가능하도록 만듦.
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, items) ;
-        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout) ;
-        //linearLayout.setAdapter(adapter);
+        final ListView listview = (ListView) findViewById(R.id.listview) ;
+        listview.setAdapter(adapter);
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -59,10 +59,12 @@ public class Recommendation extends AppCompatActivity {
                 // 클래스 모델이 필요?
                 for (DataSnapshot user : dataSnapshot.getChildren()) {
                     //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
-                    // review 안에 있는 user 안의 review를 linearlayout에 넣기
-                    String str = user.child("review").getValue(String.class);
+                    // reviw 안에 있는 user 안의 review를 listview에 넣기
+                    String str = user.child("menuname").getValue(String.class);
+                    String strs = user.child("review").getValue(String.class);
+                    String strss = user.child("star").getValue(String.class);
                     Log.i("TAG: value is ", str);
-                    items.add(str);
+                    items.add(str + "\n리뷰: " + strs + "\n별점: " + strss);
                 }
                 adapter.notifyDataSetChanged();
             }

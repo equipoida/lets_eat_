@@ -58,7 +58,7 @@ public class confusion extends AppCompatActivity {
         databaseRef.child("suggestion").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                adapter.clear();
                 // 클래스 모델이 필요?
                 for (DataSnapshot suggest : dataSnapshot.getChildren()) {
                     //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);

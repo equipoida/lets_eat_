@@ -66,7 +66,7 @@ public class Rating extends AppCompatActivity {
                 //모든 값 가져오기
                 String menuname = mmenuname.getText().toString();
                 String review = mreview.getText().toString();
-                String star = String.valueOf(mstar.getNumStars());
+                String star = String.valueOf(mstar.getRating());
 
                 Userhelper helperclass = new Userhelper(menuname, review, star);
 

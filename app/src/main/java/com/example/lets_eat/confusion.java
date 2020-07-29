@@ -3,6 +3,7 @@ package com.example.lets_eat;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -30,6 +31,7 @@ public class confusion extends AppCompatActivity {
         // listview 생성 및 adapter 지정.
         final ListView listview = (ListView) findViewById(R.id.listview) ;
         listview.setAdapter(adapter) ;
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         mBinding.button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {

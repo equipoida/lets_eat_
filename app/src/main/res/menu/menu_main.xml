@@ -7,7 +7,7 @@
         android:title="추천메뉴" />
     <item
         android:id="@+id/item2"
-        android:title="혼잡도" />
+        android:title="한줄건의" />
     <item
         android:id="@+id/item3"
         android:title="알림" />

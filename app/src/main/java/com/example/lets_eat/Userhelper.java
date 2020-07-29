@@ -6,15 +6,15 @@ import android.widget.RatingBar;
 public class Userhelper {
     String menuname;
     String review;
-    //String star;
+    String star;
 
     public Userhelper() {
     }
 
-    public Userhelper(String menuname, String review) {
+    public Userhelper(String menuname, String review, String star) {
         this.menuname = menuname;
         this.review = review;
-        //this.star = star;
+        this.star = star;
     }
 
     public String getMenuname() {
@@ -33,7 +33,6 @@ public class Userhelper {
         this.review = review;
     }
 
-    /*
     public String getStar() {
         return star;
     }
@@ -42,5 +41,5 @@ public class Userhelper {
         this.star = star;
     }
 
-     */
+
 }

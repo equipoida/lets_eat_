@@ -2,9 +2,7 @@ package com.example.lets_eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -74,15 +72,15 @@ public class Rating extends AppCompatActivity {
 
                 Userhelper helperclass = new Userhelper(menuname, review, star);
 
+                //review 안의 user
+                //user 안의 push()로 만들어준 랜덤한 문자(개별적인 걸 위함)
+                //그 안에 menuname, review, star의 값을 받아줌.
                 mDatabase.child("user").push().setValue(helperclass);
+
+                Toast.makeText(getApplication(), "리뷰가 저장됨", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
-    }
-
-    public void mOnClick(View view) {
-        Toast.makeText(getApplication(), "리뷰가 저장됨", Toast.LENGTH_SHORT).show();
-        finish();
-
     }
 
 }

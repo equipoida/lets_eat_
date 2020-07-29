@@ -39,20 +39,7 @@ public class Join extends AppCompatActivity {
 
         final Intent intent = new Intent(this, MainActivity.class);
 
-
         findViewById(R.id.joinBtn).setOnClickListener(onClickListener);
-        /*
-        binding.joinBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //회원 정보 입력하고, 회원가입 버튼을 누르면
-                //초기 화면(로그인 화면)으로 돌아감.
-                //입력된 데이터들을 DB에 저장 필요
-                finish();
-            }
-        });
-
-         */
 
     }
 
@@ -87,12 +74,12 @@ public class Join extends AppCompatActivity {
             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
-            if (task.isSuccessful()) {
+            if (task.isSuccessful()) { //회원가입 성공 시
                 // Sign in success, update UI with the signed-in user's information
                 Log.d(TAG, "createUserWithEmail:success");
                 FirebaseUser user = mAuth.getCurrentUser();
                 //updateUI(user); //UI
-            } else {
+            } else { //회원가입 실패 시
                 // If sign in fails, display a message to the user.
                 Log.w(TAG, "createUserWithEmail:failure", task.getException());
                 Toast.makeText(Join.this,"회원가입 실패",Toast.LENGTH_SHORT).show();
@@ -104,7 +91,6 @@ public class Join extends AppCompatActivity {
                              */
             }
 
-            // ...
         }
     });
 }

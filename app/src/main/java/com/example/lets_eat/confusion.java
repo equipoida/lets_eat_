@@ -2,22 +2,36 @@
 package com.example.lets_eat;
 
 import android.os.Bundle;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lets_eat.databinding.ActivityConfusionBinding;
+import com.example.lets_eat.databinding.ActivityRatingBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class confusion extends AppCompatActivity {
     private ActivityConfusionBinding mBinding;
+    private FirebaseAuth mAuth;
+    FirebaseDatabase rootNode;
+    DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +49,22 @@ public class confusion extends AppCompatActivity {
 
         mBinding.button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                rootNode = FirebaseDatabase.getInstance();
+                mDatabase = rootNode.getReference("suggestion");
 
+
+                //모든 값 가져오기
+                String suggestion= mBinding.editTextTextPersonName.getText().toString();
+
+                suggest suggestions = new suggest(suggestion);
+
+                mDatabase.child("suggestion").push().setValue(suggestions);
                 // 아이템 추가.
                 items.add(mBinding.editTextTextPersonName.getText().toString());
-
                 // listview 갱신
                 adapter.notifyDataSetChanged();
             }
         }) ;
     }
 }
+

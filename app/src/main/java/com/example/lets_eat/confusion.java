@@ -53,10 +53,10 @@ public class confusion extends AppCompatActivity {
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseRef = database.getReference("notification");
+        DatabaseReference databaseRef = database.getReference("suggestion");
 
         // Read from the database
-        databaseRef.child("notification").addValueEventListener(new ValueEventListener() {
+        databaseRef.child("suggestion").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 adapter.clear();
@@ -64,7 +64,7 @@ public class confusion extends AppCompatActivity {
                 for (DataSnapshot notification : dataSnapshot.getChildren()) {
                     //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
                     //하위키들의 value를 어떻게 가져오느냐???
-                    String str = notification.child("notification").getValue(String.class);
+                    String str = notification.child("suggestion").getValue(String.class);
                     Log.i("TAG: value is ", str);
                     items.add(str);
                 }
@@ -77,6 +77,21 @@ public class confusion extends AppCompatActivity {
             }
         });
         // listview 생성 및 adapter 지정.
+        mBinding.button.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                rootNode = FirebaseDatabase.getInstance();
+                mDatabase = rootNode.getReference("suggestion");
+                //모든 값 가져오기
+                String suggestion= mBinding.editTextTextPersonName.getText().toString();
+                suggest suggestions = new suggest(suggestion);
+                mDatabase.child("suggestion").push().setValue(suggestions);
+                // 아이템 추가.
+                items.add(mBinding.editTextTextPersonName.getText().toString());
+                // listview 갱신
+                adapter.notifyDataSetChanged();
+                mBinding.editTextTextPersonName.getText().clear();
+            }
+        }) ;
     }
 }
 

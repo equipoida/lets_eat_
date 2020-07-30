@@ -106,7 +106,7 @@ public class Recommendation extends AppCompatActivity {
                             String str = user.child("menuname").getValue(String.class);
                             String strs = user.child("review").getValue(String.class);
                             String strss = user.child("star").getValue(String.class);
-                            if (name.equals(str)) {
+                            if (str.contains(name)) {
                                 Log.i("TAG: value is ", str);
                                 items.add(str + "\n리뷰: " + strs + "\n별점: " + strss);
                             }

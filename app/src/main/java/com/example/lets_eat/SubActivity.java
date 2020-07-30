@@ -86,41 +86,41 @@ public class SubActivity extends AppCompatActivity {
 
 
             //테스트1
-           // Elements titles = doc.select("td"); //2: 월요일 3: 화요일
+            // Elements titles = doc.select("td"); //2: 월요일 3: 화요일
 
-           // for (Element e : titles) {
-                String weekday = weekdayFormat.format(currentTime);
+            // for (Element e : titles) {
+            String weekday = weekdayFormat.format(currentTime);
 
 
-                if (weekday.equals("Mon")) {
-                    htmlContentInStringFormat =doc.select("td").get(0).text();
-                    System.out.println(htmlContentInStringFormat);
-                } else if (weekday.equals("Tue")) {
-                    htmlContentInStringFormat = doc.select("td").get(1).text();
-                    System.out.println(htmlContentInStringFormat);
-                } else if (weekday.equals("Wed")) {
-                    htmlContentInStringFormat = doc.select("td").get(2).text();
-                    System.out.println(htmlContentInStringFormat);
-                } else if (weekday.equals("Thu")) {
-                    htmlContentInStringFormat = doc.select("td").get(3).text();
-                    System.out.println(htmlContentInStringFormat);
-                } else if (weekday.equals("Fri")) {
-                    htmlContentInStringFormat = doc.select("td").get(4).text();
-                    System.out.println(htmlContentInStringFormat);
-                } else if (weekday.equals("Sat")) {
-                    htmlContentInStringFormat = "운영하지 않습니다.";
-                    System.out.println("운영하지 않습니다.");
-                } else if (weekday.equals("Sun")) {
-                    htmlContentInStringFormat = "운영하지 않습니다.";
-                    System.out.println("운영하지 않습니다.");
-                }
+            if (weekday.equals("Mon")) {
+                htmlContentInStringFormat =doc.select("td").get(0).text();
+                System.out.println(htmlContentInStringFormat);
+            } else if (weekday.equals("Tue")) {
+                htmlContentInStringFormat = doc.select("td").get(1).text();
+                System.out.println(htmlContentInStringFormat);
+            } else if (weekday.equals("Wed")) {
+                htmlContentInStringFormat = doc.select("td").get(2).text();
+                System.out.println(htmlContentInStringFormat);
+            } else if (weekday.equals("Thu")) {
+                htmlContentInStringFormat = doc.select("td").get(3).text();
+                System.out.println(htmlContentInStringFormat);
+            } else if (weekday.equals("Fri")) {
+                htmlContentInStringFormat = doc.select("td").get(4).text();
+                System.out.println(htmlContentInStringFormat);
+            } else if (weekday.equals("Sat")) {
+                htmlContentInStringFormat = "운영하지 않습니다.";
+                System.out.println("운영하지 않습니다.");
+            } else if (weekday.equals("Sun")) {
+                htmlContentInStringFormat = "운영하지 않습니다.";
+                System.out.println("운영하지 않습니다.");
+            }
 
 
 
             return null;
 
 
-    }
+        }
         @Override
         protected void onPostExecute(Void result) {
 

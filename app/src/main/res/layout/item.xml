@@ -21,12 +21,5 @@
             android:textColor="@android:color/black"
             android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/submessage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lines="2"
-            android:text="package_name"
-            android:textSize="12sp" />
     </LinearLayout>
 </LinearLayout>

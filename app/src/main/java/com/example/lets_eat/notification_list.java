@@ -1,168 +1,129 @@
 
 package com.example.lets_eat;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.PopupMenu;
+import android.widget.ProgressBar;
+import android.widget.RatingBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.lets_eat.databinding.ActivityConfusionBinding;
+import com.example.lets_eat.databinding.ActivityNotificationListBinding;
+import com.example.lets_eat.databinding.ActivityRatingBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
-class ItemObject {
-    private String mainmessage;
-    private String submessage;
-
-
-    public ItemObject(String mainmessage,String submessage){
-        this.mainmessage = mainmessage;
-        this.submessage = submessage;
-
-    }
-
-
-    public String getTitle() {
-        return mainmessage;
-    }
-
-    public String getDetail_link() {
-        return submessage;
-    }
-
-}
-
-class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-
-    //데이터 배열 선언
-    private ArrayList<ItemObject> mList;
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView mainmessage, submessage;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-
-            mainmessage = (TextView) itemView.findViewById(R.id.mainmessage);
-            submessage = (TextView) itemView.findViewById(R.id.submessage);
-
-        }
-    }
-
-    //생성자
-    public MyAdapter(ArrayList<ItemObject> list) {
-        this.mList = list;
-    }
-
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return null;
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, int position) {
-
-        holder.mainmessage.setText(String.valueOf(mList.get(position).getTitle()));
-        holder.submessage.setText(String.valueOf(mList.get(position).getDetail_link()));
-
-        //다 해줬는데도 GlideApp 에러가 나면 rebuild project를 해주자.
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 0;
-    }
-
-
-}
 public class notification_list extends AppCompatActivity {
+    private ActivityNotificationListBinding mBinding;
+    private FirebaseAuth mAuth;
+    FirebaseDatabase rootNode;
+    DatabaseReference mDatabase;
 
-    private RecyclerView recyclerView;
-    private ArrayList<ItemObject> list = new ArrayList();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification_list);
+        mBinding = ActivityNotificationListBinding.inflate(getLayoutInflater());
+        ArrayList<String> items = new ArrayList<String>();
+        // ArrayAdapter 생성. 아이템 View를 선택(single choice)가능하도록 만듦.
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_2, items);
+        setContentView(mBinding.getRoot());
+        // 빈 데이터 리스트 생성.
 
-        recyclerView = (RecyclerView) findViewById(R.id.reCyclerview);
+        final ListView listview = (ListView) findViewById(R.id.listview);
+        listview.setAdapter(adapter);
 
-        //AsyncTask 작동시킴(파싱)
-        new Description().execute();
+        JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
+        jsoupAsyncTask.execute();
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseRef = database.getReference("notification");
+
+        // Read from the database
+        databaseRef.child("notification").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                adapter.clear();
+                // 클래스 모델이 필요?
+                for (DataSnapshot notification : dataSnapshot.getChildren()) {
+                    //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
+                    //하위키들의 value를 어떻게 가져오느냐???
+                    String str = notification.child("notification").getValue(String.class);
+                    Log.i("TAG: value is ", str);
+                    items.add(str);
+                }
+               // adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        // listview 생성 및 adapter 지정.
     }
 
-
-    private class Description extends AsyncTask<Void, Void, Void> {
-
-        //진행바표시
-        private ProgressDialog progressDialog;
+   class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
+        private String htmlPageUrl = "https://www.hansung.ac.kr/web/www/life_03_01_t1"; //파싱할 홈페이지의 URL주소
+        private String htmlContentInStringFormats = "";
+        Date currentTime = Calendar.getInstance().getTime();
+        SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE", Locale.getDefault());
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            //진행다일로그 시작
-            progressDialog = new ProgressDialog(notification_list.this);
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setMessage("잠시 기다려 주세요.");
-            progressDialog.show();
-
         }
 
         @Override
         protected Void doInBackground(Void... params) {
+
+            Document doc = null;
             try {
-                Document doc = Jsoup.connect("https://www.hansung.ac.kr/web/www/life_03_01_t2").get();
-                Elements mElementDataSize = doc.select("tr");//.select("li"); //필요한 녀석만 꼬집어서 지정
-                int mElementSize = mElementDataSize.size(); //목록이 몇개인지 알아낸다. 그만큼 루프를 돌려야 하나깐.
-
-                for (Element elem : mElementDataSize) { //이렇게 요긴한 기능이
-                    //영화목록 <li> 에서 다시 원하는 데이터를 추출해 낸다.
-                    String my_title = elem.select("tr").text();
-                    String my_imgUrl = elem.select("tr").text();
-                    //특정하기 힘들다... 저 앞에 있는집의 오른쪽으로 두번째집의 건너집이 바로 우리집이야 하는 식이다.
-
-                    //Log.d("test", "test" + mTitle);
-                    //ArrayList에 계속 추가한다.
-                    list.add(new ItemObject(my_title, my_imgUrl));
-                }
-
-                //추출한 전체 <li> 출력해 보자.
-                Log.d("debug :", "List " + mElementDataSize);
+                doc = Jsoup.connect(htmlPageUrl).get();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            htmlContentInStringFormats =doc.select("span").get(204).text();
+            items.add(htmlContentInStringFormats);
+            adapter.notifyDataSetChanged();
             return null;
         }
-
         @Override
         protected void onPostExecute(Void result) {
-            //ArraList를 인자로 해서 어답터와 연결한다.
-            MyAdapter myAdapter = new MyAdapter(list);
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-            recyclerView.setLayoutManager(layoutManager);
-            recyclerView.setAdapter(myAdapter);
 
-            progressDialog.dismiss();
+
+
+
         }
-
     }
 }
+

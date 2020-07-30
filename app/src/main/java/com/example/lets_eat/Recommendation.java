@@ -110,9 +110,7 @@ public class Recommendation extends AppCompatActivity {
                                 Log.i("TAG: value is ", str);
                                 items.add(str + "\n리뷰: " + strs + "\n별점: " + strss);
                             }
-                            else if(name.length()==0){
-                                items.add(str + "\n리뷰: " + strs + "\n별점: " + strss);
-                            }
+
                         }
                         adapter.notifyDataSetChanged();
                     }

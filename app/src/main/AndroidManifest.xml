@@ -40,15 +40,16 @@
         <activity android:name=".confusion" />
         <activity android:name=".NotifyMain"
             android:parentActivityName=".notification_list"></activity>
-        <!--
-        <service
-            android:name=".MyFireBaseMessagingService"
-            android:exported="false">
+
+        <service android:name=".MyFireBaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
-        -->
+
+
+
     </application>
 
 </manifest>

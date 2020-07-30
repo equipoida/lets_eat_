@@ -32,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class confusion extends AppCompatActivity {
-    private ActivityConfusionBinding mBinding;
+    private static ActivityConfusionBinding mBinding;
     private FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference mDatabase;
@@ -53,18 +53,18 @@ public class confusion extends AppCompatActivity {
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseRef = database.getReference("suggestion");
+        DatabaseReference databaseRef = database.getReference("notification");
 
         // Read from the database
-        databaseRef.child("suggestion").addValueEventListener(new ValueEventListener() {
+        databaseRef.child("notification").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 adapter.clear();
                 // 클래스 모델이 필요?
-                for (DataSnapshot suggest : dataSnapshot.getChildren()) {
+                for (DataSnapshot notification : dataSnapshot.getChildren()) {
                     //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
                     //하위키들의 value를 어떻게 가져오느냐???
-                    String str = suggest.child("suggestion").getValue(String.class);
+                    String str = notification.child("notification").getValue(String.class);
                     Log.i("TAG: value is ", str);
                     items.add(str);
                 }
@@ -77,27 +77,6 @@ public class confusion extends AppCompatActivity {
             }
         });
         // listview 생성 및 adapter 지정.
-
-
-        mBinding.button.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                rootNode = FirebaseDatabase.getInstance();
-                mDatabase = rootNode.getReference("suggestion");
-
-
-                //모든 값 가져오기
-                String suggestion= mBinding.editTextTextPersonName.getText().toString();
-
-                suggest suggestions = new suggest(suggestion);
-
-                mDatabase.child("suggestion").push().setValue(suggestions);
-                // 아이템 추가.
-                items.add(mBinding.editTextTextPersonName.getText().toString());
-                // listview 갱신
-                adapter.notifyDataSetChanged();
-                mBinding.editTextTextPersonName.getText().clear();
-            }
-        }) ;
     }
 }
 

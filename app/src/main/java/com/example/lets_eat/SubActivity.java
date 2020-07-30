@@ -67,7 +67,7 @@ public class SubActivity extends AppCompatActivity {
         private String htmlPageUrl = "https://www.hansung.ac.kr/web/www/life_03_01_t2"; //파싱할 홈페이지의 URL주소
         private String htmlContentInStringFormat = "";
         Date currentTime = Calendar.getInstance().getTime();
-        SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE", Locale.ENGLISH);
+        SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE", Locale.getDefault());
 
         @Override
         protected void onPreExecute() {
@@ -114,9 +114,8 @@ public class SubActivity extends AppCompatActivity {
                 htmlContentInStringFormat = "운영하지 않습니다.";
                 System.out.println("운영하지 않습니다.");
             }
-            System.out.println(weekday);
-            return null;
 
+            return null;
 
         }
         @Override

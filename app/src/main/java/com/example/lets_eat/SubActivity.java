@@ -1,5 +1,6 @@
 package com.example.lets_eat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -21,6 +22,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.lets_eat.databinding.ActivityMainBinding;
 import com.example.lets_eat.databinding.ActivitySubBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 
 import org.jsoup.Jsoup;
@@ -41,9 +44,9 @@ import java.util.Locale;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
-public class SubActivity extends AppCompatActivity {
+public class SubActivity extends AppCompatActivity implements ChipNavigationBar.OnClickListener{
     private static ActivitySubBinding binding;
-
+    private ChipNavigationBar chipnavigationbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,10 @@ public class SubActivity extends AppCompatActivity {
         binding = ActivitySubBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         ImageView imgView = binding.imageView;
+        chipnavigationbar = binding.chipbar;
+        chipnavigationbar.setItemSelected(R.id.chipbar,true);
+        bottonMenu();
+
         PhotoViewAttacher photoView = new PhotoViewAttacher(imgView);
         photoView.update();
         String imageUrl = "https://www.hansung.ac.kr/portlet-repositories/fckeditor/images/7qHyuRAiKcc=/1595204995118.png";
@@ -60,6 +67,67 @@ public class SubActivity extends AppCompatActivity {
 
         JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();
+
+
+    }
+
+    private void bottonMenu() {
+        chipnavigationbar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+            final Intent intent6 = new Intent(SubActivity.this, Recommendation.class);
+            final Intent intent5 = new Intent(SubActivity.this, confusion.class);
+            final Intent intent3 = new Intent(SubActivity.this, notification_list.class);
+            final Intent intent4 = new Intent(SubActivity.this, Rating.class);
+            final Intent intent8 = new Intent(SubActivity.this, Person.class);
+            final Intent intent9 = new Intent(SubActivity.this, SubActivity.class);
+            @Override
+            public void onItemSelected(int i) {
+                switch(i){
+                    case R.id.item0:
+                        Toast.makeText(SubActivity.this, "홈", Toast.LENGTH_SHORT).show();
+                        startActivity(intent9);
+                        break;
+                    case R.id.item1:
+                        Toast.makeText(SubActivity.this, "추천메뉴", Toast.LENGTH_SHORT).show();
+                        startActivity(intent6);
+                        break;
+                    case R.id.item2:
+                        Toast.makeText(SubActivity.this, "한줄 건의함", Toast.LENGTH_SHORT).show();
+                        startActivity(intent5); //혼잡도 창으로 가기
+                        break;
+                    case R.id.item3:
+                        Toast.makeText(SubActivity.this, "알림", Toast.LENGTH_SHORT).show();
+                        startActivity(intent3); //알림 창으로 가기
+                        break;
+                    case R.id.item4:
+                        Toast.makeText(SubActivity.this, "리뷰", Toast.LENGTH_SHORT).show();
+                        startActivity(intent4); //리뷰 창으로 가기
+                        break;
+                    case R.id.item5:
+                        Toast.makeText(SubActivity.this, "계정 정보", Toast.LENGTH_SHORT).show();
+                        startActivity(intent8); //계정 정보 창으로 가기
+                        break;
+
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View view) {
+        /*chipnavigationbar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(int i) {
+                final Intent intent6 = new Intent(SubActivity.this, Recommendation.class);
+                final Intent intent5 = new Intent(SubActivity.this, confusion.class);
+                final Intent intent3 = new Intent(SubActivity.this, notification_list.class);
+                final Intent intent4 = new Intent(SubActivity.this, Rating.class);
+                final Intent intent8 = new Intent(SubActivity.this, Person.class);
+                if(i==1){
+                    Toast.makeText(SubActivity.this, "추천메뉴", Toast.LENGTH_SHORT).show();
+                    startActivity(intent6);
+                }
+            }
+        });*/
 
     }
 
@@ -132,8 +200,9 @@ public class SubActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+
+    //@Override
+    /*public boolean onOptionsItemSelected(MenuItem item) {
         final Intent intent6 = new Intent(this, Recommendation.class);
         final Intent intent5 = new Intent(this, confusion.class);
         final Intent intent3 = new Intent(this, notification_list.class);
@@ -164,6 +233,7 @@ public class SubActivity extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
+
 
 }

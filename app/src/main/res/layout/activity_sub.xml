@@ -7,14 +7,19 @@
     tools:context=".SubActivity">
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/chipbar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:id="@+id/chipbar"
         android:background="#fff"
-        android:gravity="center"
         android:elevation="16dp"
+        android:gravity="center"
         app:cnb_menuResource="@menu/menu_main"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/faculties"
@@ -42,16 +47,16 @@
         android:layout_height="361dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/students"
-        app:layout_constraintVertical_bias="0.569"
+        app:layout_constraintVertical_bias="0.046"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/facultiesMenu"
-        android:layout_width="312dp"
-        android:layout_height="257dp"
+        android:layout_width="335dp"
+        android:layout_height="85dp"
         android:layout_marginTop="20dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"

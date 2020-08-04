@@ -2,6 +2,7 @@ package com.example.lets_eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import com.example.lets_eat.databinding.ActivityRatingBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import java.util.ArrayList;
 
@@ -27,6 +29,8 @@ public class Rating extends AppCompatActivity {
     RatingBar mstar;
     EditText mreview;
     Button mmenuname;
+    private ChipNavigationBar chipnavigationbar;
+
 
     FirebaseDatabase rootNode;
     DatabaseReference mDatabase;
@@ -44,7 +48,9 @@ public class Rating extends AppCompatActivity {
 
         final Button menuchoice = mBinding.menuchoice;
         final Button submit = mBinding.submit;
-
+        chipnavigationbar = mBinding.chipbar;
+        chipnavigationbar.setItemSelected(R.id.chipbar,true);
+        bottonMenu();
         /*
         // 빈 데이터 리스트 생성.
         final ArrayList<String> items = new ArrayList<String>() ;
@@ -110,5 +116,44 @@ public class Rating extends AppCompatActivity {
             }
         });
     }
+    private void bottonMenu() {
+        chipnavigationbar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+            final Intent intent6 = new Intent(Rating.this, Recommendation.class);
+            final Intent intent5 = new Intent(Rating.this, confusion.class);
+            final Intent intent3 = new Intent(Rating.this, notification_list.class);
+            final Intent intent4 = new Intent(Rating.this, Rating.class);
+            final Intent intent8 = new Intent(Rating.this, Person.class);
+            final Intent intent9 = new Intent(Rating.this, SubActivity.class);
+            @Override
+            public void onItemSelected(int i) {
+                switch(i){
+                    case R.id.item0:
+                        Toast.makeText(Rating.this, "홈", Toast.LENGTH_SHORT).show();
+                        startActivity(intent9);
+                        break;
+                    case R.id.item1:
+                        Toast.makeText(Rating.this, "추천메뉴", Toast.LENGTH_SHORT).show();
+                        startActivity(intent6);
+                        break;
+                    case R.id.item2:
+                        Toast.makeText(Rating.this, "한줄 건의함", Toast.LENGTH_SHORT).show();
+                        startActivity(intent5); //혼잡도 창으로 가기
+                        break;
+                    case R.id.item3:
+                        Toast.makeText(Rating.this, "알림", Toast.LENGTH_SHORT).show();
+                        startActivity(intent3); //알림 창으로 가기
+                        break;
+                    case R.id.item4:
+                        Toast.makeText(Rating.this, "리뷰", Toast.LENGTH_SHORT).show();
+                        startActivity(intent4); //리뷰 창으로 가기
+                        break;
+                    case R.id.item5:
+                        Toast.makeText(Rating.this, "계정 정보", Toast.LENGTH_SHORT).show();
+                        startActivity(intent8); //계정 정보 창으로 가기
+                        break;
 
+                }
+            }
+        });
+    }
 }

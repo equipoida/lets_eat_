@@ -43,7 +43,7 @@ import java.util.Locale;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
-public class SubActivity extends AppCompatActivity implements ChipNavigationBar.OnClickListener{
+public class SubActivity extends AppCompatActivity {
     private static ActivitySubBinding binding;
     private ChipNavigationBar chipnavigationbar;
 
@@ -111,25 +111,6 @@ public class SubActivity extends AppCompatActivity implements ChipNavigationBar.
         });
     }
 
-    @Override
-    public void onClick(View view) {
-        /*chipnavigationbar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(int i) {
-                final Intent intent6 = new Intent(SubActivity.this, Recommendation.class);
-                final Intent intent5 = new Intent(SubActivity.this, confusion.class);
-                final Intent intent3 = new Intent(SubActivity.this, notification_list.class);
-                final Intent intent4 = new Intent(SubActivity.this, Rating.class);
-                final Intent intent8 = new Intent(SubActivity.this, Person.class);
-                if(i==1){
-                    Toast.makeText(SubActivity.this, "추천메뉴", Toast.LENGTH_SHORT).show();
-                    startActivity(intent6);
-                }
-            }
-        });*/
-
-    }
-
     static class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
         private String htmlPageUrl = "https://www.hansung.ac.kr/web/www/life_03_01_t2"; //파싱할 홈페이지의 URL주소
         private String htmlContentInStringFormat = "";
@@ -191,48 +172,5 @@ public class SubActivity extends AppCompatActivity implements ChipNavigationBar.
             binding.facultiesMenu.setText(htmlContentInStringFormat);
         }
     }
-
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-
-    //@Override
-    /*public boolean onOptionsItemSelected(MenuItem item) {
-        final Intent intent6 = new Intent(this, Recommendation.class);
-        final Intent intent5 = new Intent(this, confusion.class);
-        final Intent intent3 = new Intent(this, notification_list.class);
-        final Intent intent4 = new Intent(this, Rating.class);
-        final Intent intent8 = new Intent(this, Person.class);
-
-        switch (item.getItemId()) {
-            case R.id.item1:
-                Toast.makeText(this, "추천메뉴", Toast.LENGTH_SHORT).show();
-                startActivity(intent6); //추천메뉴 창으로 가기
-                return true;
-            case R.id.item2:
-                Toast.makeText(this, "한줄 건의함", Toast.LENGTH_SHORT).show();
-                startActivity(intent5); //혼잡도 창으로 가기
-                return true;
-            case R.id.item3:
-                Toast.makeText(this, "알림", Toast.LENGTH_SHORT).show();
-                startActivity(intent3); //알림 창으로 가기
-                return true;
-            case R.id.item4:
-                Toast.makeText(this, "리뷰", Toast.LENGTH_SHORT).show();
-                startActivity(intent4); //리뷰 창으로 가기
-                return true;
-            case R.id.item5:
-                Toast.makeText(this, "계정 정보", Toast.LENGTH_SHORT).show();
-                startActivity(intent8); //계정 정보 창으로 가기
-                return true;
-
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
-
 
 }

@@ -6,25 +6,31 @@
     <item
         android:id="@+id/item0"
         android:title="홈"
-        app:cnb_iconColor="@color/navigation_color_main"/>
+        android:icon="@drawable/fork"
+        app:cnb_iconColor="@color/lavender"/>
     <item
         android:id="@+id/item1"
         android:title="추천메뉴"
-        app:cnb_iconColor="@color/navigation_color_recom"/>
+        android:icon="@drawable/quality"
+        app:cnb_iconColor="@color/lavender"/>
     <item
         android:id="@+id/item2"
         android:title="한줄건의"
-        app:cnb_iconColor="@color/navigation_color_suggest"/>
+        android:icon="@drawable/writing"
+        app:cnb_iconColor="@color/lavender"/>
     <item
         android:id="@+id/item3"
         android:title="알림"
-        app:cnb_iconColor="@color/navigation_color_notif"/>
+        android:icon="@drawable/bell"
+        app:cnb_iconColor="@color/lavender"/>
     <item
         android:id="@+id/item4"
         android:title="리뷰"
-        app:cnb_iconColor="@color/navigation_color_review"/>
+        android:icon="@drawable/recommendation"
+        app:cnb_iconColor="@color/lavender" />
     <item
         android:id="@+id/item5"
         android:title="계정 정보"
-        app:cnb_iconColor="@color/navigation_color_info"/>
+        android:icon="@drawable/user"
+        app:cnb_iconColor="@color/lavender"/>
 </menu>

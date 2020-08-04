@@ -22,7 +22,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.lets_eat.databinding.ActivityMainBinding;
 import com.example.lets_eat.databinding.ActivitySubBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 

@@ -37,6 +37,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="메뉴검색"
+        android:fontFamily="@font/jalnan"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/listview"
         app:layout_constraintEnd_toStartOf="@+id/search"

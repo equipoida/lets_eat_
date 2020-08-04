@@ -45,7 +45,7 @@ public class MyFireBaseMessagingService extends com.google.firebase.messaging.Fi
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION); // 알림 왔을때 사운드.
 
         NotificationCompat.Builder notiBuilder = new NotificationCompat.Builder(this, chId)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.noti_icon)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setAutoCancel(true)

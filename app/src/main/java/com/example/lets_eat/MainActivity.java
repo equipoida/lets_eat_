@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        /*
+/*
         // MyFireBaseMessagingService 관련
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -97,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("FCM Log", "FCM 토큰: " + token);
                         Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
                 
-         */
+
     }
 }

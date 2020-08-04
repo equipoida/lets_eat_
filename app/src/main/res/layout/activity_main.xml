@@ -10,11 +10,11 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="180dp"
         android:text="@string/login_btn"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="@+id/text_id"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="@+id/text_id"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,20 +48,41 @@
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/buttonshape"
         android:text="@string/login_btn"
-        app:layout_constraintEnd_toStartOf="@+id/join"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/textPassword" />
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/join"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textPassword"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/join"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/buttonshape1"
         android:text="@string/join_btn"
-        app:layout_constraintEnd_toEndOf="@+id/textPassword"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textPassword" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="116dp"
+        android:layout_height="79dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.881"
+        app:srcCompat="@drawable/fork" />
 </androidx.constraintlayout.widget.ConstraintLayout>

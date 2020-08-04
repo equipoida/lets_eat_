@@ -3,4 +3,10 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="navigation_color_main">#336677</color>
+    <color name="navigation_color_recom">#1194AA</color>
+    <color name="navigation_color_suggest">#6200EE</color>
+    <color name="navigation_color_notif">#C9379D</color>
+    <color name="navigation_color_review">#E6A919</color>
+    <color name="navigation_color_info">#008577</color>
 </resources>

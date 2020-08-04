@@ -1,4 +1,3 @@
-
 package com.example.lets_eat;
 
 import android.os.AsyncTask;
@@ -46,7 +45,7 @@ public class notification_list extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-  JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
+        JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();
 
     }
@@ -79,7 +78,7 @@ public class notification_list extends AppCompatActivity {
             // for (Element e : titles) {
             String weekday = weekdayFormat.format(currentTime);
             htmlContentInStringFormat = doc.select("span").get(204).text();
-Log.i("TAG: value is ",htmlContentInStringFormat);
+            Log.i("TAG: value is ",htmlContentInStringFormat);
             return null;
 
 

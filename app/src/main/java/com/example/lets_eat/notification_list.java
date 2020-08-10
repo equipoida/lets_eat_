@@ -117,9 +117,6 @@ public class notification_list extends AppCompatActivity {
             }
 
 
-            //테스트1
-            // Elements titles = doc.select("td"); //2: 월요일 3: 화요일
-
             // for (Element e : titles) {
             String weekday = weekdayFormat.format(currentTime);
             htmlContentInStringFormat = doc.select("span").get(204).text();

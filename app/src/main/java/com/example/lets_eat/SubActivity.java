@@ -69,7 +69,12 @@ public class SubActivity extends AppCompatActivity {
                         break;
                     case R.id.item1:
                         Toast.makeText(SubActivity.this, "추천메뉴", Toast.LENGTH_SHORT).show();
-                        startActivity(intent6);
+                        //startActivity(intent6);
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragment_home, new RecommendationFragment())
+                                .addToBackStack(null)
+                                .commit();
                         break;
                     case R.id.item2:
                         Toast.makeText(SubActivity.this, "한줄 건의함", Toast.LENGTH_SHORT).show();
@@ -82,11 +87,21 @@ public class SubActivity extends AppCompatActivity {
                         break;
                     case R.id.item3:
                         Toast.makeText(SubActivity.this, "알림", Toast.LENGTH_SHORT).show();
-                        startActivity(intent3); //알림 창으로 가기
+                        //startActivity(intent3); //알림 창으로 가기
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragment_home, new Notification())
+                                .addToBackStack(null)
+                                .commit();
                         break;
                     case R.id.item4:
                         Toast.makeText(SubActivity.this, "리뷰", Toast.LENGTH_SHORT).show();
-                        startActivity(intent4); //리뷰 창으로 가기
+                        //startActivity(intent4); //리뷰 창으로 가기
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragment_home, new RationFragment())
+                                .addToBackStack(null)
+                                .commit();
                         break;
                     case R.id.item5:
                         Toast.makeText(SubActivity.this, "계정 정보", Toast.LENGTH_SHORT).show();

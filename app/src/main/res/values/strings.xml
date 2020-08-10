@@ -6,7 +6,9 @@
     <string name="phoneNumber_hint">휴대폰 번호를 입력하세요</string>
     <string name="login_btn">로그인</string>
     <string name="join_btn">회원가입</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    </resources>
+</resources>
 

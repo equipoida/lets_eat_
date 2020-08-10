@@ -1,47 +1,24 @@
 package com.example.lets_eat;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.lets_eat.databinding.ActivityMainBinding;
 import com.example.lets_eat.databinding.ActivitySubBinding;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.Locale;
-
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class SubActivity extends AppCompatActivity {
     private static ActivitySubBinding binding;
@@ -52,17 +29,17 @@ public class SubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySubBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ImageView imgView = binding.imageView;
+        //ImageView imgView = binding.imageView;
         chipnavigationbar = binding.chipbar;
         chipnavigationbar.setItemSelected(R.id.chipbar,true);
         bottonMenu();
 
-        PhotoViewAttacher photoView = new PhotoViewAttacher(imgView);
+       /* PhotoViewAttacher photoView = new PhotoViewAttacher(imgView);
         photoView.update();
         String imageUrl = "https://www.hansung.ac.kr/portlet-repositories/fckeditor/images/7qHyuRAiKcc=/1595204995118.png";
-        Glide.with(this).load(imageUrl).into(imgView);
+        Glide.with(this).load(imageUrl).into(imgView);*/
 
-        binding.facultiesMenu.setMovementMethod(new ScrollingMovementMethod()); //스크롤
+        //binding.facultiesMenu.setMovementMethod(new ScrollingMovementMethod()); //스크롤
 
         JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();
@@ -76,14 +53,19 @@ public class SubActivity extends AppCompatActivity {
             final Intent intent5 = new Intent(SubActivity.this, confusion.class);
             final Intent intent3 = new Intent(SubActivity.this, notification_list.class);
             final Intent intent4 = new Intent(SubActivity.this, Rating.class);
-            final Intent intent8 = new Intent(SubActivity.this, Person.class);
+            final Intent intent8 = new Intent(SubActivity.this, PersonActivity.class);
             final Intent intent9 = new Intent(SubActivity.this, SubActivity.class);
             @Override
             public void onItemSelected(int i) {
                 switch(i){
                     case R.id.item0:
                         Toast.makeText(SubActivity.this, "홈", Toast.LENGTH_SHORT).show();
-                        startActivity(intent9);
+                        //startActivity(intent9);
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragment_home, new home())
+                                .addToBackStack(null)
+                                .commit();
                         break;
                     case R.id.item1:
                         Toast.makeText(SubActivity.this, "추천메뉴", Toast.LENGTH_SHORT).show();
@@ -91,7 +73,12 @@ public class SubActivity extends AppCompatActivity {
                         break;
                     case R.id.item2:
                         Toast.makeText(SubActivity.this, "한줄 건의함", Toast.LENGTH_SHORT).show();
-                        startActivity(intent5); //혼잡도 창으로 가기
+                       // startActivity(intent5); //혼잡도 창으로 가기
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragment_home, new suggestion())
+                                .addToBackStack(null)
+                                .commit();
                         break;
                     case R.id.item3:
                         Toast.makeText(SubActivity.this, "알림", Toast.LENGTH_SHORT).show();
@@ -103,7 +90,12 @@ public class SubActivity extends AppCompatActivity {
                         break;
                     case R.id.item5:
                         Toast.makeText(SubActivity.this, "계정 정보", Toast.LENGTH_SHORT).show();
-                        startActivity(intent8); //계정 정보 창으로 가기
+                        //startActivity(intent8); //계정 정보 창으로 가기
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragment_home, new person())
+                                .addToBackStack(null)
+                                .commit();
                         break;
 
                 }
@@ -169,7 +161,7 @@ public class SubActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
 
-            binding.facultiesMenu.setText(htmlContentInStringFormat);
+            //binding.facultiesMenu.setText(htmlContentInStringFormat);
         }
     }
 

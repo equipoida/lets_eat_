@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.RatingBar;
 import android.widget.Toast;
@@ -20,8 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
-
-import java.util.ArrayList;
 
 public class Rating extends AppCompatActivity {
     private ActivityRatingBinding mBinding;
@@ -122,7 +118,7 @@ public class Rating extends AppCompatActivity {
             final Intent intent5 = new Intent(Rating.this, confusion.class);
             final Intent intent3 = new Intent(Rating.this, notification_list.class);
             final Intent intent4 = new Intent(Rating.this, Rating.class);
-            final Intent intent8 = new Intent(Rating.this, Person.class);
+            final Intent intent8 = new Intent(Rating.this, PersonActivity.class);
             final Intent intent9 = new Intent(Rating.this, SubActivity.class);
             @Override
             public void onItemSelected(int i) {

@@ -12,13 +12,9 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.Toast;
 
-import com.example.lets_eat.databinding.ActivityConfusionBinding;
-import com.example.lets_eat.databinding.ActivityRatingBinding;
 import com.example.lets_eat.databinding.ActivityRecommendationBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -136,7 +132,7 @@ public class Recommendation extends AppCompatActivity {
             final Intent intent5 = new Intent(Recommendation.this, confusion.class);
             final Intent intent3 = new Intent(Recommendation.this, notification_list.class);
             final Intent intent4 = new Intent(Recommendation.this, Rating.class);
-            final Intent intent8 = new Intent(Recommendation.this, Person.class);
+            final Intent intent8 = new Intent(Recommendation.this, PersonActivity.class);
             final Intent intent9 = new Intent(Recommendation.this, SubActivity.class);
             @Override
             public void onItemSelected(int i) {

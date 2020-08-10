@@ -3,27 +3,12 @@ package com.example.lets_eat;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
 import com.example.lets_eat.databinding.ActivityNotificationListBinding;
-import com.example.lets_eat.databinding.ActivitySubBinding;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import org.jsoup.Jsoup;
@@ -31,12 +16,9 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class notification_list extends AppCompatActivity {
     private static ActivityNotificationListBinding binding;
@@ -60,7 +42,7 @@ public class notification_list extends AppCompatActivity {
             final Intent intent5 = new Intent(notification_list.this, confusion.class);
             final Intent intent3 = new Intent(notification_list.this, notification_list.class);
             final Intent intent4 = new Intent(notification_list.this, Rating.class);
-            final Intent intent8 = new Intent(notification_list.this, Person.class);
+            final Intent intent8 = new Intent(notification_list.this, PersonActivity.class);
             final Intent intent9 = new Intent(notification_list.this, SubActivity.class);
             @Override
             public void onItemSelected(int i) {

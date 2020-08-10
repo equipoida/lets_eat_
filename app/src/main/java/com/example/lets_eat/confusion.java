@@ -4,17 +4,11 @@ package com.example.lets_eat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.PopupMenu;
-import android.widget.ProgressBar;
-import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,7 +16,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lets_eat.databinding.ActivityConfusionBinding;
-import com.example.lets_eat.databinding.ActivityRatingBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -103,7 +96,7 @@ public class confusion extends AppCompatActivity {
             final Intent intent5 = new Intent(confusion.this, confusion.class);
             final Intent intent3 = new Intent(confusion.this, notification_list.class);
             final Intent intent4 = new Intent(confusion.this, Rating.class);
-            final Intent intent8 = new Intent(confusion.this, Person.class);
+            final Intent intent8 = new Intent(confusion.this, PersonActivity.class);
             final Intent intent9 = new Intent(confusion.this, SubActivity.class);
             @Override
             public void onItemSelected(int i) {

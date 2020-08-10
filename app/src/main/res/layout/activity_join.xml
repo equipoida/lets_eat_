@@ -12,6 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="184dp"
         android:text="@string/join_btn"
+        android:background="@drawable/buttonshape2"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

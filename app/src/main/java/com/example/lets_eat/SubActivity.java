@@ -49,12 +49,12 @@ public class SubActivity extends AppCompatActivity {
 
     private void bottonMenu() {
         chipnavigationbar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
-          /*  final Intent intent6 = new Intent(SubActivity.this, Recommendation.class);
+            final Intent intent6 = new Intent(SubActivity.this, Recommendation.class);
             final Intent intent5 = new Intent(SubActivity.this, confusion.class);
             final Intent intent3 = new Intent(SubActivity.this, notification_list.class);
             final Intent intent4 = new Intent(SubActivity.this, Rating.class);
             final Intent intent8 = new Intent(SubActivity.this, PersonActivity.class);
-            final Intent intent9 = new Intent(SubActivity.this, SubActivity.class);*/
+            final Intent intent9 = new Intent(SubActivity.this, SubActivity.class);
             @Override
             public void onItemSelected(int i) {
                 switch(i){

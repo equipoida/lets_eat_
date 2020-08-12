@@ -38,38 +38,38 @@ public class notification_list extends AppCompatActivity {
     }
     private void bottonMenu() {
         chipnavigationbar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
-            final Intent intent6 = new Intent(notification_list.this, Recommendation.class);
-            final Intent intent5 = new Intent(notification_list.this, confusion.class);
-            final Intent intent3 = new Intent(notification_list.this, notification_list.class);
-            final Intent intent4 = new Intent(notification_list.this, Rating.class);
-            final Intent intent8 = new Intent(notification_list.this, PersonActivity.class);
-            final Intent intent9 = new Intent(notification_list.this, SubActivity.class);
+            //final Intent intent6 = new Intent(notification_list.this, Recommendation.class);
+            //final Intent intent5 = new Intent(notification_list.this, confusion.class);
+            //final Intent intent3 = new Intent(notification_list.this, notification_list.class);
+            //final Intent intent4 = new Intent(notification_list.this, Rating.class);
+            //final Intent intent8 = new Intent(notification_list.this, PersonActivity.class);
+            //final Intent intent9 = new Intent(notification_list.this, SubActivity.class);
             @Override
             public void onItemSelected(int i) {
                 switch(i){
                     case R.id.item0:
                         Toast.makeText(notification_list.this, "홈", Toast.LENGTH_SHORT).show();
-                        startActivity(intent9);
+                        //startActivity(intent9);
                         break;
                     case R.id.item1:
                         Toast.makeText(notification_list.this, "추천메뉴", Toast.LENGTH_SHORT).show();
-                        startActivity(intent6);
+                        //startActivity(intent6);
                         break;
                     case R.id.item2:
                         Toast.makeText(notification_list.this, "한줄 건의함", Toast.LENGTH_SHORT).show();
-                        startActivity(intent5); //혼잡도 창으로 가기
+                        //startActivity(intent5); //혼잡도 창으로 가기
                         break;
                     case R.id.item3:
                         Toast.makeText(notification_list.this, "알림", Toast.LENGTH_SHORT).show();
-                        startActivity(intent3); //알림 창으로 가기
+                        //startActivity(intent3); //알림 창으로 가기
                         break;
                     case R.id.item4:
                         Toast.makeText(notification_list.this, "리뷰", Toast.LENGTH_SHORT).show();
-                        startActivity(intent4); //리뷰 창으로 가기
+                        //startActivity(intent4); //리뷰 창으로 가기
                         break;
                     case R.id.item5:
                         Toast.makeText(notification_list.this, "계정 정보", Toast.LENGTH_SHORT).show();
-                        startActivity(intent8); //계정 정보 창으로 가기
+                        //startActivity(intent8); //계정 정보 창으로 가기
                         break;
 
                 }

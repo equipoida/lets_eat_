@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private EditText email_login;
     private EditText pwd_login;
-    static String email;
+    static String email ;
     FirebaseAuth firebaseAuth;
 
     @Override

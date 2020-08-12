@@ -19,7 +19,7 @@
         <EditText
             android:id="@+id/menu"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="55dp"
             android:ems="10"
             android:hint="메뉴검색"
             android:layout_margin="5dp"

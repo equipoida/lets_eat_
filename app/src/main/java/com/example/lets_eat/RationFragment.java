@@ -77,7 +77,6 @@ public class RationFragment extends Fragment {
         mstar = (RatingBar)view.findViewById(R.id.ratingBar);
         mreview = (EditText)view.findViewById(R.id.editText);
         mmenuname = (Button)view.findViewById(R.id.menuchoice);
-       // final Button menuchoice = (Button)view.findViewById(R.id.menuchoice);
         final Button submit = (Button)view.findViewById(R.id.submit);
         mmenuname.setOnClickListener(new View.OnClickListener() {
             @Override

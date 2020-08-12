@@ -47,7 +47,6 @@ public class suggestion extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
     }
 
     public suggestion() {

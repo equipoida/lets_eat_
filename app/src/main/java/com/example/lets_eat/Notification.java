@@ -1,12 +1,25 @@
 package com.example.lets_eat;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,25 +53,65 @@ public class Notification extends Fragment {
     public static Notification newInstance(String param1, String param2) {
         Notification fragment = new Notification();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
 
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
+        jsoupAsyncTask.execute();
         return inflater.inflate(R.layout.fragment_notification, container, false);
+    }
+
+    class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
+        private String htmlPageUrl = "https://www.hansung.ac.kr/web/www/life_03_01_t1"; //파싱할 홈페이지의 URL주소
+        private String htmlContentInStringFormat = "";
+        Date currentTime = Calendar.getInstance().getTime();
+        SimpleDateFormat weekdayFormat = new SimpleDateFormat("EE", Locale.ENGLISH);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            Document doc = null;
+            try {
+                doc = Jsoup.connect(htmlPageUrl).get();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            // for (Element e : titles) {
+            String weekday = weekdayFormat.format(currentTime);
+            htmlContentInStringFormat = doc.select("span").get(204).text();
+            Log.i("TAG: value is ",htmlContentInStringFormat);
+
+            return null;
+
+
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            TextView textView4 = (TextView)getView().findViewById(R.id.textView4);
+            textView4.setText(htmlContentInStringFormat);
+        }
     }
 }

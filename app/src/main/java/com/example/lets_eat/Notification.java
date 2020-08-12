@@ -74,6 +74,10 @@ public class Notification extends Fragment {
         JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();
         return inflater.inflate(R.layout.fragment_notification, container, false);
+
+
+
+
     }
 
     class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {

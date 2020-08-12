@@ -29,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
     private EditText pwd_login;
     static String email ;
     FirebaseAuth firebaseAuth;
-
+    @Override
+    public void onBackPressed() {
+        //뒤로가기 막음
+        //super.onBackPressed();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

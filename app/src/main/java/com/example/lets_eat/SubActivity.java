@@ -32,6 +32,11 @@ public class SubActivity extends AppCompatActivity {
         //ImageView imgView = binding.imageView;
         chipnavigationbar = binding.chipbar;
         chipnavigationbar.setItemSelected(R.id.chipbar,true);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_home, new home())
+                .addToBackStack(null)
+                .commit();
         bottonMenu();
 
        /* PhotoViewAttacher photoView = new PhotoViewAttacher(imgView);

@@ -9,6 +9,10 @@
 
         <!-- No Title Bar -->
         <item name="windowActionBar">false</item>
+        ?
+
+        .00.
+
         <item name="windowNoTitle">true</item>
 
         <item name="android:textViewStyle">@style/customTextViewFontStyle</item>

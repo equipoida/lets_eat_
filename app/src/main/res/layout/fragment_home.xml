@@ -14,6 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
         android:text="교직원 식당 메뉴"
+        android:textColor="@color/blackcherry"
 
          />
     <TextView
@@ -30,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="140dp"
+        android:textColor="@color/blackcherry"
         android:text="학생식당 메뉴"
 
         />

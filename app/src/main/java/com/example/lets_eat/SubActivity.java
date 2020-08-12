@@ -1,6 +1,8 @@
 package com.example.lets_eat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -24,13 +26,28 @@ public class SubActivity extends AppCompatActivity {
     private static ActivitySubBinding binding;
     private ChipNavigationBar chipnavigationbar;
 
+    /*
+    private FragmentManager fragmentManager = getSupportFragmentManager();
+    private home home = new home();
+    private RationFragment rationFragment = new RationFragment();
+    private Notification notification = new Notification();
+    private person person = new person();
+    private RecommendationFragment recommendationFragment = new RecommendationFragment();
+    private suggestion suggestion = new suggestion();
+
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySubBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         //ImageView imgView = binding.imageView;
-        chipnavigationbar = binding.chipbar;
+
+        //FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        //transaction.replace(R.id.fragment_home, home).commitAllowingStateLoss();
+
+        chipnavigationbar = findViewById(R.id.chipbar);
         chipnavigationbar.setItemSelected(R.id.chipbar,true);
         getSupportFragmentManager()
                 .beginTransaction()
@@ -50,6 +67,39 @@ public class SubActivity extends AppCompatActivity {
         jsoupAsyncTask.execute();
 
     }
+
+    /*
+    class ItemSelectedListener implements ChipNavigationBar.OnItemSelectedListener{
+
+        @Override
+        public void onItemSelected(int i) {
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+            switch(i)
+            {
+                case R.id.item0:
+                    transaction.replace(R.id.fragment_home, home).commitAllowingStateLoss();
+                    break;
+                case R.id.item1:
+                    transaction.replace(R.id.fragment_home, recommendationFragment).commitAllowingStateLoss();
+                    break;
+                case R.id.item2:
+                    transaction.replace(R.id.fragment_home, suggestion).commitAllowingStateLoss();
+                    break;
+                case R.id.item3:
+                    transaction.replace(R.id.fragment_home, notification).commitAllowingStateLoss();
+                    break;
+                case R.id.item4:
+                    transaction.replace(R.id.fragment_home, rationFragment).commitAllowingStateLoss();
+                    break;
+                case R.id.item5:
+                    transaction.replace(R.id.fragment_home, person).commitAllowingStateLoss();
+                    break;
+            }
+        }
+    }
+
+     */
 
     private void bottonMenu() {
         chipnavigationbar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {

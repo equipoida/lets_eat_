@@ -111,7 +111,7 @@ public class Notification extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             TextView textView4 = (TextView)getView().findViewById(R.id.textView4);
-            textView4.setText(htmlContentInStringFormat);
+           textView4.setText(htmlContentInStringFormat);
         }
     }
 }

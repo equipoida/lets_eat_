@@ -32,7 +32,6 @@ public class Recommendation extends AppCompatActivity {
     Button btn_search;
     EditText menu;
     private ChipNavigationBar chipnavigationbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

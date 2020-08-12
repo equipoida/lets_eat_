@@ -95,13 +95,13 @@ public class home extends Fragment {
         Glide.with(this).load(imageUrl).into(imgView);
         return v;
     }
-    /* public void sendImageRequest() {
-         String url = "https://www.hansung.ac.kr/portlet-repositories/fckeditor/images/7qHyuRAiKcc=/1596542799929.png";
+   /* public void sendImageRequest() {
+        String url = "https://www.hansung.ac.kr/portlet-repositories/fckeditor/images/7qHyuRAiKcc=/1596542799929.png";
 
-         ImageView imageView = (ImageView) getView().findViewById(R.id.imageView);
-         ImageLoadTask task = new ImageLoadTask(url,imageView);
-         task.execute();
-     }*/
+        ImageView imageView = (ImageView) getView().findViewById(R.id.imageView);
+        ImageLoadTask task = new ImageLoadTask(url,imageView);
+        task.execute();
+    }*/
     class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
         private String htmlPageUrl = "https://www.hansung.ac.kr/web/www/life_03_01_t2"; //파싱할 홈페이지의 URL주소
         private String htmlContentInStringFormat = "";

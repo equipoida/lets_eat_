@@ -87,7 +87,7 @@ public class suggestion extends Fragment {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_suggestion, container, false);
         btn=(Button)view.findViewById(R.id.button);
-        editText=(EditText)view.findViewById(R.id.editTextTextPersonName);
+        editText=(EditText)view.findViewById(R.id.editTextTextName);
 
         final ArrayList<String> items = new ArrayList<String>() ;
         // ArrayAdapter 생성. 아이템 View를 선택(single choice)가능하도록 만듦.

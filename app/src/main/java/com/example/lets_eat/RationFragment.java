@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import com.example.lets_eat.databinding.ActivityRatingBinding;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +27,7 @@ import com.example.lets_eat.databinding.ActivityRatingBinding;
  */
 public class RationFragment extends Fragment {
 
-    private ActivityRatingBinding mBinding;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -75,7 +75,7 @@ public class RationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mBinding = ActivityRatingBinding.inflate(getLayoutInflater());
+
 
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_ration, container, false);
@@ -148,6 +148,6 @@ public class RationFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mBinding = null;
+
     }
 }

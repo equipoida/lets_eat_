@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,8 +34,12 @@ public class person extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private FragmentPersonBinding binding;
+
+    Button btnLogout;
+    Button btnRevoke;
     private static final String TAG = "revokeActivity";
     static private TextView information;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -69,26 +74,25 @@ public class person extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_person, container, false);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        binding = FragmentPersonBinding.inflate(getLayoutInflater());
+        //binding = FragmentPersonBinding.inflate(inflater, container, false);
+        View view = inflater.inflate(R.layout.fragment_person, container, false);
+        //binding = FragmentPersonBinding.inflate(getLayoutInflater());
         //로그인 되어있는 email 정보 보여주기
-        information = binding.emailInformation;
-        information.setText(MainActivity.email);
+        //information = binding.emailInformation;
+        //information.setText(MainActivity.email);
+
+        btnLogout = (Button)view.findViewById(R.id.btn_logout);
+        btnRevoke = (Button)view.findViewById(R.id.btn_revoke);
 
 
         final Intent intent9 = new Intent(getActivity(), MainActivity.class);
-        binding.btnLogout.setOnClickListener(
+        btnLogout.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -101,7 +105,7 @@ public class person extends Fragment {
 
 
 
-        binding.btnRevoke.setOnClickListener(new View.OnClickListener() {
+        btnRevoke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -121,6 +125,21 @@ public class person extends Fragment {
 
             }
         });
+        // Inflate the layout for this fragment
+        //return inflater.inflate(R.layout.fragment_person, container, false);
+        return view;
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        //binding = null;
     }
 }

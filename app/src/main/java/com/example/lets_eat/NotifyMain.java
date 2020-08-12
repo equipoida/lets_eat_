@@ -54,8 +54,8 @@ public class NotifyMain extends AppCompatActivity {
 
 
         // notification 누르면 리스트뷰 창으로 연결
-        Intent intent = new Intent(this, notification_list.class);
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this); stackBuilder.addParentStack(notification_list.class); stackBuilder.addNextIntent(intent);
+        Intent intent = new Intent(this, Notification.class);
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this); stackBuilder.addParentStack(Notification.class); stackBuilder.addNextIntent(intent);
         PendingIntent pIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT); mBuilder.setContentIntent(pIntent);
         mBuilder.setAutoCancel(true);
         mNotificationManagerCompat.notify(MY_NOTIFICATION_ID, mBuilder.build());

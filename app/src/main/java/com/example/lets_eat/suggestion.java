@@ -83,22 +83,26 @@ public class suggestion extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_suggestion, container, false);
         btn=(Button)view.findViewById(R.id.button);
         editText=(EditText)view.findViewById(R.id.editTextTextPersonName);
+
         final ArrayList<String> items = new ArrayList<String>() ;
         // ArrayAdapter 생성. 아이템 View를 선택(single choice)가능하도록 만듦.
         final ArrayAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, items) ;
         final ListView listview = (ListView) view.findViewById(R.id.listview) ;
         listview.setAdapter(adapter) ;
         // 선택된 곳에 따른 화면이동
-       // getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+        // 파이어베이스 데이터베이스에 있는 suggestion경로를 이용할 것 선언
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseRef = database.getReference("suggestion");
 
         // Read from the database
+        // suggestion경로의 항목들(자식들)을 추가함
         databaseRef.child("suggestion").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -111,6 +115,7 @@ public class suggestion extends Fragment {
                     Log.i("TAG: value is ", str);
                     items.add(str);
                 }
+                // 조정함
                 adapter.notifyDataSetChanged();
             }
 

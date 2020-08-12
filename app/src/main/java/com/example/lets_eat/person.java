@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -80,22 +82,27 @@ public class person extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //binding = FragmentPersonBinding.inflate(inflater, container, false);
-        View view = inflater.inflate(R.layout.fragment_person, container, false);
-        //binding = FragmentPersonBinding.inflate(getLayoutInflater());
-        //로그인 되어있는 email 정보 보여주기
-        //information = binding.emailInformation;
-        //information.setText(MainActivity.email);
 
+        View view = inflater.inflate(R.layout.fragment_person, container, false);
+        View anotherView = inflater.inflate(R.layout.activity_main, container, false);
+
+        //로그인 되어있는 email 정보 보여주기
+        information = (TextView) anotherView.findViewById(R.id.emailInformation);
+
+        //information.setText(MainActivity.email);
         btnLogout = (Button)view.findViewById(R.id.btn_logout);
         btnRevoke = (Button)view.findViewById(R.id.btn_revoke);
 
 
+        // MainActivity클래스로 넘어가게 해주는 인텐트 선언
         final Intent intent9 = new Intent(getActivity(), MainActivity.class);
+
+        // 로그아웃 버튼을 누르면
         btnLogout.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        // 로그아웃이 된 후, 첫 화면으로 넘어감
                         FirebaseAuth.getInstance().signOut();
                         startActivity(intent9);
                     }
@@ -103,20 +110,22 @@ public class person extends Fragment {
         );
 
 
-
-
+        // 탈퇴 버튼을 누르면
         btnRevoke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+                // 연동된 파이어베이스에서 계정이 삭제됨 (탈퇴)
                 ((FirebaseUser) user).delete()
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
+                                // 탈퇴 성공 시
                                 if (task.isSuccessful()) {
                                     Log.d(TAG, "User account deleted.");
                                     //Toast.makeText(person.getActivity(), "user account deleted!", Toast.LENGTH_SHORT).show();
+                                    // 첫 화면으로 넘어감
                                     startActivity(intent9);
 
                                 }
@@ -129,6 +138,9 @@ public class person extends Fragment {
         //return inflater.inflate(R.layout.fragment_person, container, false);
         return view;
     }
+
+
+
 
     @Override
     public void onStart() {

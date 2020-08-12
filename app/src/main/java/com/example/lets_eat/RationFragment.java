@@ -76,21 +76,27 @@ public class RationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mBinding = ActivityRatingBinding.inflate(getLayoutInflater());
+
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_ration, container, false);
         mstar = (RatingBar)view.findViewById(R.id.ratingBar);
         mreview = (EditText)view.findViewById(R.id.editText);
         mmenuname = (Button)view.findViewById(R.id.menuchoice);
+
         final Button submit = (Button)view.findViewById(R.id.submit);
+
+        //메뉴이름 선택
         mmenuname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PopupMenu popupMenu = new PopupMenu(getContext(), view);
                 MenuInflater inflater = getActivity().getMenuInflater();
                 inflater.inflate(R.menu.popup, popupMenu.getMenu());
+                // 메뉴이름을 누르면
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
+                        // 그 메뉴의 이름이 나타남
                         mmenuname.setText(menuItem.getTitle());
                         return false;
                     }
@@ -99,6 +105,7 @@ public class RationFragment extends Fragment {
             }
         });
 
+        //제출버튼 클릭
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,11 +113,12 @@ public class RationFragment extends Fragment {
                 mDatabase = rootNode.getReference("review");
 
 
-                //값을 데이터베이스에 보내기
+                // (메뉴이름, 한줄리뷰, 평점) 값을 데이터베이스에 보내기
                 String menuname = mmenuname.getText().toString();
                 String review = mreview.getText().toString();
                 String star = String.valueOf(mstar.getRating());
 
+                // 만들어준 userhelper클래스를 가져옴
                 Userhelper helperclass = new Userhelper(menuname, review, star);
 
                 //review 안의 user

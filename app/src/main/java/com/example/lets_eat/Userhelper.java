@@ -3,6 +3,7 @@ package com.example.lets_eat;
 import android.widget.Button;
 import android.widget.RatingBar;
 
+// Rating에서 파이어베이스로 연동될 수 있도록 도와주는 클래스
 public class Userhelper {
     String menuname;
     String review;

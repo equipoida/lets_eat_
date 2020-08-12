@@ -85,11 +85,13 @@ public class RecommendationFragment extends Fragment {
         listview.setAdapter(adapter);
         //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+        // 파이어베이스 데이터베이스에 리뷰 경로로 들어가도록 함
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference databaseRef = database.getReference("review");
 
 
         // Read from the database
+        // user경로의 자식으로 항목이 추가될 수 있도록 함
         databaseRef.child("user").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -126,10 +128,13 @@ public class RecommendationFragment extends Fragment {
                 return false;
             }
         });
+
+        // 검색 버튼을 누르면 파이어베이스에 있는 항목들이 리스트뷰에 뜨도록 함
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String name = menu.getText().toString();
+                // user경로에 있는 항목들을 사용함
                 databaseRef.child("user").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -141,14 +146,19 @@ public class RecommendationFragment extends Fragment {
                             String str = user.child("menuname").getValue(String.class);
                             String strs = user.child("review").getValue(String.class);
                             String strss = user.child("star").getValue(String.class);
+                            // 검색한 단어가 포함되어있다면
                             if (str.contains(name)) {
+                                // 포함된 단어를 갖고 있는 리뷰만 보여줌
                                 Log.i("TAG: value is ", str);
                                 items.add(str + "\n리뷰: " + strs + "\n별점: " + strss);
                             }
+                            // 검색한 단어가 없다면
                             else if(name.length()==0){
+                                // 전체를 보여줌
                                 items.add(str + "\n리뷰: " + strs + "\n별점: " + strss);
                             }
                         }
+                        // 배치를 조정함
                         adapter.notifyDataSetChanged();
                     }
 

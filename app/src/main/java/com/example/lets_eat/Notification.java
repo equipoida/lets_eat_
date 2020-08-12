@@ -74,9 +74,13 @@ public class Notification extends Fragment {
         JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();
         return inflater.inflate(R.layout.fragment_notification, container, false);
+
+
+
     }
 
     class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
+        // 학교 홈페이지에 있는 안내말을 가져옴
         private String htmlPageUrl = "https://www.hansung.ac.kr/web/www/life_03_01_t1"; //파싱할 홈페이지의 URL주소
         private String htmlContentInStringFormat = "";
         Date currentTime = Calendar.getInstance().getTime();
@@ -98,8 +102,10 @@ public class Notification extends Fragment {
             }
 
 
+            // 요일에 맞게 가져옴
             // for (Element e : titles) {
             String weekday = weekdayFormat.format(currentTime);
+            // span태그로 되어있는 것들을 가져옴
             htmlContentInStringFormat = doc.select("span").get(204).text();
             Log.i("TAG: value is ",htmlContentInStringFormat);
 
@@ -111,7 +117,7 @@ public class Notification extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             TextView textView4 = (TextView)getView().findViewById(R.id.textView4);
-           textView4.setText(htmlContentInStringFormat);
+            textView4.setText(htmlContentInStringFormat);
         }
     }
 }

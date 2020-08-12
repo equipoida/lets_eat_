@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:windowSoftInputMode="adjustResize|adjustPan"
         android:theme="@style/AppTheme">
-        <activity android:name=".Person"></activity>
+        <activity android:name=".Person" />
         <activity android:name=".Recommendation">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -38,10 +38,12 @@
         <activity android:name=".SubActivity" />
         <activity android:name=".notification_list" />
         <activity android:name=".confusion" />
-        <activity android:name=".NotifyMain"
-            android:parentActivityName=".notification_list"></activity>
+        <activity
+            android:name=".NotifyMain"
+            android:parentActivityName=".notification_list" />
 
-        <service android:name=".MyFireBaseMessagingService">
+        <service android:name=".MyFireBaseMessagingService"
+            android:exported="false">
             <intent-filter>
 
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>

@@ -21,8 +21,8 @@
 
     <EditText
         android:id="@+id/idText"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
+        android:layout_width="316dp"
+        android:layout_height="55dp"
         android:ems="10"
         android:fontFamily="@font/jalnan"
         android:hint="(ID)이메일 형식으로 입력하세요"
@@ -34,7 +34,7 @@
 
     <EditText
         android:id="@+id/passwordText"
-        android:layout_width="260dp"
+        android:layout_width="316dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:fontFamily="@font/jalnan"

@@ -40,7 +40,6 @@ public class person extends Fragment {
     Button btnLogout;
     Button btnRevoke;
     private static final String TAG = "revokeActivity";
-    private TextView information;
 
 
     // TODO: Rename and change types of parameters
@@ -79,13 +78,6 @@ public class person extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_person, container, false);
-        View anotherView = inflater.inflate(R.layout.activity_main, container, false);
-
-        //로그인 되어있는 email 정보 보여주기
-        information = (TextView) view.findViewById(R.id.emailInformation);
-
-        information.setText(MainActivity.email);
-        //information.setText("test");
         btnLogout = (Button)view.findViewById(R.id.btn_logout);
         btnRevoke = (Button)view.findViewById(R.id.btn_revoke);
 

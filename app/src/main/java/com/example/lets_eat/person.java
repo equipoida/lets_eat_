@@ -82,11 +82,13 @@ public class person extends Fragment {
         View anotherView = inflater.inflate(R.layout.activity_main, container, false);
 
         //로그인 되어있는 email 정보 보여주기
-        information = (TextView) view.findViewById(R.id.emailInformation);
+
 
         information.setText(MainActivity.email);
         //information.setText("test");
         btnLogout = (Button)view.findViewById(R.id.btn_logout);
+
+
         btnRevoke = (Button)view.findViewById(R.id.btn_revoke);
 
 

@@ -126,17 +126,6 @@ public class RationFragment extends Fragment {
                 //그 안에 menuname, review, star의 값을 받아줌.
                 mDatabase.child("user").push().setValue(helperclass);
 
-                /*
-
-                // 아이템 추가.
-                items.add(mBinding.menuchoice.getText().toString());
-                items.add(String.valueOf(mBinding.ratingBar.getRating()));
-                //Recommendation의 listview 갱신
-                //adapter.notifyDataSetChanged();
-
-
-                 */
-
                 Toast.makeText(getContext(), "리뷰가 저장됨", Toast.LENGTH_SHORT).show();
             }
         });

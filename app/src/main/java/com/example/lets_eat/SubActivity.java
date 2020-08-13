@@ -1,10 +1,7 @@
 package com.example.lets_eat;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -26,80 +23,29 @@ public class SubActivity extends AppCompatActivity {
     private static ActivitySubBinding binding;
     private ChipNavigationBar chipnavigationbar;
 
-    /*
-    private FragmentManager fragmentManager = getSupportFragmentManager();
-    private home home = new home();
-    private RationFragment rationFragment = new RationFragment();
-    private Notification notification = new Notification();
-    private person person = new person();
-    private RecommendationFragment recommendationFragment = new RecommendationFragment();
-    private suggestion suggestion = new suggestion();
-
-     */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySubBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        //ImageView imgView = binding.imageView;
-
-        //FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        //transaction.replace(R.id.fragment_home, home).commitAllowingStateLoss();
 
         chipnavigationbar = findViewById(R.id.chipbar);
         chipnavigationbar.setItemSelected(R.id.chipbar,true);
+
+        // 처음 보여지는 프래그먼트
         getSupportFragmentManager()
                 .beginTransaction()
+                // fragment자리에 계정정보인 home 프래그먼트를 배치함
                 .replace(R.id.fragment_home, new home())
+                // 뒤로가기 버튼 누르면 프래그먼트가 전으로 돌아갈 수 있도록
                 .addToBackStack(null)
                 .commit();
         bottonMenu();
-
-       /* PhotoViewAttacher photoView = new PhotoViewAttacher(imgView);
-        photoView.update();
-        String imageUrl = "https://www.hansung.ac.kr/portlet-repositories/fckeditor/images/7qHyuRAiKcc=/1595204995118.png";
-        Glide.with(this).load(imageUrl).into(imgView);*/
-
-        //binding.facultiesMenu.setMovementMethod(new ScrollingMovementMethod()); //스크롤
 
         JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();
 
     }
-
-    /*
-    class ItemSelectedListener implements ChipNavigationBar.OnItemSelectedListener{
-
-        @Override
-        public void onItemSelected(int i) {
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-            switch(i)
-            {
-                case R.id.item0:
-                    transaction.replace(R.id.fragment_home, home).commitAllowingStateLoss();
-                    break;
-                case R.id.item1:
-                    transaction.replace(R.id.fragment_home, recommendationFragment).commitAllowingStateLoss();
-                    break;
-                case R.id.item2:
-                    transaction.replace(R.id.fragment_home, suggestion).commitAllowingStateLoss();
-                    break;
-                case R.id.item3:
-                    transaction.replace(R.id.fragment_home, notification).commitAllowingStateLoss();
-                    break;
-                case R.id.item4:
-                    transaction.replace(R.id.fragment_home, rationFragment).commitAllowingStateLoss();
-                    break;
-                case R.id.item5:
-                    transaction.replace(R.id.fragment_home, person).commitAllowingStateLoss();
-                    break;
-            }
-        }
-    }
-
-     */
 
     private void bottonMenu() {
         chipnavigationbar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
@@ -108,55 +54,61 @@ public class SubActivity extends AppCompatActivity {
                 switch(i){
                     case R.id.item0:
                         Toast.makeText(SubActivity.this, "홈", Toast.LENGTH_SHORT).show();
-                        //startActivity(intent9);
                         getSupportFragmentManager()
                                 .beginTransaction()
+                                // fragment자리에 계정정보인 home 프래그먼트를 배치함
                                 .replace(R.id.fragment_home, new home())
+                                // 뒤로가기 버튼 누르면 프래그먼트가 전으로 돌아갈 수 있도록
                                 .addToBackStack(null)
                                 .commit();
                         break;
                     case R.id.item1:
                         Toast.makeText(SubActivity.this, "추천메뉴", Toast.LENGTH_SHORT).show();
-                        //startActivity(intent6);
                         getSupportFragmentManager()
                                 .beginTransaction()
+                                // fragment자리에 계정정보인 RecommendationFragment 프래그먼트를 배치함
                                 .replace(R.id.fragment_home, new RecommendationFragment())
+                                // 뒤로가기 버튼 누르면 프래그먼트가 전으로 돌아갈 수 있도록
                                 .addToBackStack(null)
                                 .commit();
                         break;
                     case R.id.item2:
                         Toast.makeText(SubActivity.this, "한줄 건의함", Toast.LENGTH_SHORT).show();
-                       // startActivity(intent5); //혼잡도 창으로 가기
                         getSupportFragmentManager()
                                 .beginTransaction()
+                                // fragment자리에 계정정보인 suggestion 프래그먼트를 배치함
                                 .replace(R.id.fragment_home, new suggestion())
+                                // 뒤로가기 버튼 누르면 프래그먼트가 전으로 돌아갈 수 있도록
                                 .addToBackStack(null)
                                 .commit();
                         break;
                     case R.id.item3:
                         Toast.makeText(SubActivity.this, "알림", Toast.LENGTH_SHORT).show();
-                        //startActivity(intent3); //알림 창으로 가기
                         getSupportFragmentManager()
                                 .beginTransaction()
+                                // fragment자리에 계정정보인 Notification 프래그먼트를 배치함
                                 .replace(R.id.fragment_home, new Notification())
+                                // 뒤로가기 버튼 누르면 프래그먼트가 전으로 돌아갈 수 있도록
                                 .addToBackStack(null)
                                 .commit();
                         break;
                     case R.id.item4:
                         Toast.makeText(SubActivity.this, "리뷰", Toast.LENGTH_SHORT).show();
-                        //startActivity(intent4); //리뷰 창으로 가기
                         getSupportFragmentManager()
                                 .beginTransaction()
+                                // fragment자리에 계정정보인 RationFragment 프래그먼트를 배치함
                                 .replace(R.id.fragment_home, new RationFragment())
+                                // 뒤로가기 버튼 누르면 프래그먼트가 전으로 돌아갈 수 있도록
                                 .addToBackStack(null)
                                 .commit();
                         break;
                     case R.id.item5:
                         Toast.makeText(SubActivity.this, "계정 정보", Toast.LENGTH_SHORT).show();
-                        //startActivity(intent8); //계정 정보 창으로 가기
                         getSupportFragmentManager()
                                 .beginTransaction()
+                                // fragment자리에 계정정보인 person 프래그먼트를 배치함
                                 .replace(R.id.fragment_home, new person())
+                                // 뒤로가기 버튼 누르면 프래그먼트가 전으로 돌아갈 수 있도록
                                 .addToBackStack(null)
                                 .commit();
                         break;
@@ -188,9 +140,7 @@ public class SubActivity extends AppCompatActivity {
             }
 
 
-            //테스트1
-            // Elements titles = doc.select("td"); //2: 월요일 3: 화요일
-
+            // 요일에 맞게 나오도록.
             // for (Element e : titles) {
             String weekday = weekdayFormat.format(currentTime);
 

@@ -5,22 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 import com.example.lets_eat.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText email_login;
     private EditText pwd_login;
     static String email ;
+    static String pwd;
     FirebaseAuth firebaseAuth;
     @Override
     public void onBackPressed() {
@@ -55,11 +48,18 @@ public class MainActivity extends AppCompatActivity {
                 //로그인 버튼을 누르면, 학식메뉴 나오게하기
                 //이곳에서 로그인 정보 확인하는 코드 필요
                 email=email_login.getText().toString().trim();
-                String pwd=pwd_login.getText().toString().trim();
+                pwd=pwd_login.getText().toString().trim();
                 //firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
-                firebaseAuth.signInWithEmailAndPassword(email,pwd)
-                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                if(email.length()==0) {
+                    Toast.makeText(MainActivity.this,"아이디를 입력해주세요",Toast.LENGTH_SHORT).show();
+                }
+                else if(pwd.length()==0) {
+                    Toast.makeText(MainActivity.this,"비밀번호를 입력해주세요",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    firebaseAuth.signInWithEmailAndPassword(email,pwd)
+                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
+                }
             }
         });
         binding.join.setOnClickListener(new View.OnClickListener() {
@@ -80,24 +80,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-/*
-        // MyFireBaseMessagingService 관련
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if(!task.isSuccessful()) {
-                            Log.w("FCM Log", "getInstanceId failed", task.getException());
-                            return;
-                        }
-                        // 새로운 InstanceID token 가져오기
-                        String token = task.getResult().getToken();
-                        Log.d("FCM Log", "FCM 토큰: " + token);
-                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
-                    }
-                });*/
-                
 
     }
 }

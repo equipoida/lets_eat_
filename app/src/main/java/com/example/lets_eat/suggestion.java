@@ -9,8 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -109,8 +107,7 @@ public class suggestion extends Fragment {
                 adapter.clear();
                 // 클래스 모델이 필요?
                 for (DataSnapshot notification : dataSnapshot.getChildren()) {
-                    //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
-                    //하위키들의 value를 어떻게 가져오느냐???
+                    // suggestion의 하위 항목들의 값을 얻어 str에 넣음
                     String str = notification.child("suggestion").getValue(String.class);
                     Log.i("TAG: value is ", str);
                     items.add(str);

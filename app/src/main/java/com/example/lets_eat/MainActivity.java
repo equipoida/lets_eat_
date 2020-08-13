@@ -52,9 +52,11 @@ public class MainActivity extends AppCompatActivity {
                 //firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
                 if(email.length()==0) {
-                    Toast.makeText(MainActivity.this,"아이디를 입력해주세요",Toast.LENGTH_SHORT).show();
+                    // 이메일이 비어있다면
+                    Toast.makeText(MainActivity.this,"이메일을 입력해주세요",Toast.LENGTH_SHORT).show();
                 }
                 else if(pwd.length()==0) {
+                    // 비밀번호가 비어있다면
                     Toast.makeText(MainActivity.this,"비밀번호를 입력해주세요",Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-
+                                    // 로그인 성공하면 홈 창으로 접속
                                     startActivity(intent);
                                 }else{
                                     Toast.makeText(MainActivity.this,"로그인 오류",Toast.LENGTH_SHORT).show();

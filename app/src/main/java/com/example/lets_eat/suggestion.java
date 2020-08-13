@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -93,7 +94,7 @@ public class suggestion extends Fragment {
         final ListView listview = (ListView) view.findViewById(R.id.listview) ;
         listview.setAdapter(adapter) ;
         // 선택된 곳에 따른 화면이동
-        //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        ((SubActivity)getActivity()).getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         // 파이어베이스 데이터베이스에 있는 suggestion경로를 이용할 것 선언
         FirebaseDatabase database = FirebaseDatabase.getInstance();

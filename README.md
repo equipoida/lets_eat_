@@ -17,7 +17,7 @@
 
 **1.3 프로젝트 목표** 
 
-- Android(java) 및 Firebase 기술 복습
+- Android(java) 및 Firebase 복습
 
 
 ### 2. 프로젝트 개요
@@ -33,13 +33,4 @@
 
 - Firebase
 
-- 크롤링
-
-
-**2.3 개발도구**  
-
-- Android Studio
-- Firebase
-
-
-
+- 웹크롤링

@@ -31,13 +31,10 @@
 
 - Android
 
--Firebase
+- Firebase
 
 - 크롤링
-  - Beautiful soup4
-  - python openpyxl
-  - 
-- Python
+
 
 **2.3 개발도구**  
 
